@@ -59,10 +59,10 @@ class ListDO extends React.Component {
                   <Thead>
                   <Tr>
                     <Th/>
-                    <Th>Ma DO</Th>
-                    <Th>Diem di</Th>
-                    <Th>Diem den</Th>
-                    <Th>So Diem</Th>
+                    <Th>Mã DO: </Th>
+                    <Th>Điểm xuất phát: </Th>
+                    <Th>Điểm trả hàng:</Th>
+                    <Th>Số điểm trả hàng: </Th>
                     {/*<Th>Xac Nhan</Th>*/}
                   </Tr>
                   </Thead>

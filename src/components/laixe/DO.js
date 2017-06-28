@@ -295,7 +295,7 @@ class DOPage extends React.Component {
               Trọng tải (tấn): <br/>
               <CompleteInput
                 option={[
-                  "1", "1.25", "1.5", "1.75", "2", "2.25", "2.5", "2.75", "3"
+                  "1", "1.2", "1.25", "1.3", "1.4", "1.5", "1.6", "1.7", "1.75", "1.8", "1.9", "2", "2.1", "2.2", "2.25", "2.3", "2.4", "2.5",  "2.6",  "2.7", "2.75",  "2.8",  "2.9", "3"
                 ]}
                 onChange={(value) => {
                   if(parseFloat(value).isNaN){
@@ -374,7 +374,7 @@ class DOPage extends React.Component {
             </Row>
             <Row style={{marginTop: 10, paddingBottom: 50}}>
               <Button type="primary"
-                      style={{height: 48, width: 200}}
+                      style={{height: 56, width: 200, fontSize: 24}}
                       onClick={() => {
                         console.log(gThis.state.data)
                         agent.LaiXe.themDO(gThis.state.data)
