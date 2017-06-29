@@ -9,7 +9,7 @@ import {
 } from '../../constants/actionTypes';
 
 import {Button, Row} from 'antd'
-
+import { Flex, WingBlank } from 'antd-mobile';
 
 const Promise = global.Promise;
 
@@ -45,32 +45,22 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        <Row className="homeWr">
-          <Link to="/it/laixe">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Them tai xe</Button>
-          </Link>
-          <Link to="/it/thauphu">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Them thau phu</Button>
-          </Link>
-          <Link to="/it/dieuhanh">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Them dieu hanh</Button>
-          </Link>
-          <Link to="/it/autofill">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Them thong tin</Button>
-          </Link>
-        </Row>
+        <WingBlank>
+          <div className="btn-container">
+            <Link to="/it/laixe">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm lái xe</Button>
+            </Link>
+            <Link to="/it/thauphu">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm thầu phụ</Button>
+            </Link>
+            <Link to="/it/dieuhanh">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm điều hành</Button>
+            </Link>
+            <Link to="/it/autofill">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thông tin</Button>
+            </Link>
+          </div>
+        </WingBlank>
       </div>
     );
   }
