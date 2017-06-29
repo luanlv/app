@@ -15,13 +15,24 @@ html, body {
     color: red;
 }
 
+.am-list-line:nth-child(1) {
+    border-top: 1px solid #ddd;
+}
+.am-list-line {
+    border-bottom: 1px solid #ddd;
+}
+
+.ant-select {
+    margin-top: 0px !important;
+}
+
 .ant-select-selection, .ant-form-item-control,  .ant-input-number, .ant-input,.it .ant-btn  {
     height: 60px !important;
     line-height: 60px !important;
     font-size: 2em !important;
 }
 
-.ant-select-selection__rendered, .ant-select-search, .it .ant-btn {
+.ant-select-selection__rendered, .ant-select-search, .it .ant-btn, .it .ant-input {
     line-height: 60px !important;
     font-size: 1em !important;
 }

@@ -50,6 +50,9 @@ class Home extends React.Component {
             <Link to="/it/laixe">
               <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm lái xe</Button>
             </Link>
+            <Link to="/it/xe">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm xe</Button>
+            </Link>
             <Link to="/it/thauphu">
               <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm thầu phụ</Button>
             </Link>

@@ -52,14 +52,14 @@ class Home extends React.Component {
               <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Lệnh điều động xe</Button>
             </Link>
             <Link to="/laixe/phucap">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Phụ cấp</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Phụ phí</Button>
             </Link>
 
             <Link to="/laixe/phucap">
               <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Thông tin</Button>
             </Link>
 
-            <Link to="/laixe/phucap">
+            <Link to="/laixe/doimatkhau">
               <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Đổi mật khẩu</Button>
             </Link>
 

@@ -19,7 +19,8 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
-import ThemAutoFill  from './component/ThemAutoFill'
+import ThemAutoFillPeople  from './component/ThemAutoFillPeople'
+import ThemAutoFillPlace  from './component/ThemAutoFillPlace'
 
 import {slugify} from '../_function'
 
@@ -70,22 +71,19 @@ class DOPage extends React.Component {
           {this.state.init && (
             <div className="it">
               <h2 style={{textAlign: 'center'}}>Thêm Auto Fill</h2>
-              <ThemAutoFill
+              <ThemAutoFillPeople
                 title="Khách hàng"
                 fieldName="khachhang"
               />
-              <ThemAutoFill
-                title="Điểm xuất phát"
-                fieldName="diemxuatphat"
-              />
-              <ThemAutoFill
-                title="Điểm trả hàng"
-                fieldName="diemtrahang"
-              />
-              <ThemAutoFill
+              <ThemAutoFillPeople
                 title="Người yêu cầu"
                 fieldName="nguoiyeucau"
               />
+              <ThemAutoFillPlace
+                title="Đia điểm"
+                fieldName="diadiem"
+              />
+              \
             </div>
           )}
           

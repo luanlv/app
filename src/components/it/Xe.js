@@ -19,7 +19,7 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
-import ThemLaiXeForm  from './component/ThemLaiXeForm'
+import ThemXeForm  from './component/ThemXeForm'
 
 import {slugify} from '../_function'
 
@@ -49,25 +49,19 @@ class DOPage extends React.Component {
     this.state = {
       init: false,
       data: {},
-      thauphu: [],
-      xe: []
+      thauphu: []
     }
   }
 
   componentWillMount() {
-    agent.IT.danhsachxe()
-      .then(resXe => {
-        agent.IT.danhsachThauPhu()
-          .then(res => {
-            this.setState(prev => {return {
-              ...prev,
-              init: true,
-              xe: resXe,
-              thauphu: res
-            }})
-          })
+    agent.IT.danhsachThauPhu()
+      .then(res => {
+        this.setState(prev => {return {
+          ...prev,
+          init: true,
+          thauphu: res
+        }})
       })
-    
   }
 
   render() {
@@ -75,22 +69,11 @@ class DOPage extends React.Component {
     return (
       <div className="do-page">
         <div className="laixe-doWr">
-          
-          {!this.state.init && (
-            <div style={{textAlign: 'center', paddingTop: 50}}>
-              <Spin tip="Loading..." />
-            </div>
-          )}
-          {this.state.init && (
+    
             <div>
-              <h2 style={{textAlign: 'center'}}>Thêm lái xe</h2>
-              <ThemLaiXeForm
-                thauphu={this.state.thauphu}
-                xe={this.state.xe}
-              />
+              <h2 style={{textAlign: 'center'}}>Thêm xe</h2>
+              <ThemXeForm />
             </div>
-          )}
-          
         </div>
       </div>
     )

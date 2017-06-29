@@ -15,11 +15,11 @@ class CompleteInput extends React.Component {
 
   handleSearch = (value) => {
     let newOption = this.state.option.filter(option => {
-      return slugify(option.value.toLowerCase() + ' ' + option.code.toLowerCase()).indexOf(slugify(value.toLowerCase())) >= 0
+      return slugify(option.toLowerCase()).indexOf(slugify(value.toLowerCase())) >= 0
     })
 
     this.setState({
-      dataSource: !value ? [] : newOption.slice(0, 5).map((el, index) => { return el.value + ' - ' + el.code})
+      dataSource: !value ? [] : newOption.slice(0, 5)
     });
 
   }
@@ -29,9 +29,23 @@ class CompleteInput extends React.Component {
     return (
       <AutoComplete
         dataSource={dataSource}
+        value={this.props.value || this.state.value || ''}
         style={{ width: this.props.isSmall ? "65%" : "100%" }}
-        onChange={(value) => {this.props.onChange(value)}}
-        onSelect={(value) => {if(this.props.selectOption) this.props.selectOption(value)}}
+        onChange={(value) => {
+          if(isNaN(parseFloat(value))){
+            this.setState(prev => {return {
+              ...prev,
+              value: ''
+            }})
+          } else {
+            this.setState(prev => {return {
+              ...prev,
+              value: value
+            }})
+            this.props.onChange(value)
+          }
+          
+        }}
         onSearch={this.handleSearch}
       />
     );

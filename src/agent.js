@@ -4,8 +4,8 @@ import _superagent from 'superagent';
 const superagent = superagentPromise(_superagent, global.Promise);
 
 // const API_ROOT = 'http://localhost:8080';
-// const API_ROOT = 'http://192.168.1.111:8080';
-const API_ROOT = 'http://api.colombus.vn';
+const API_ROOT = 'http://192.168.1.108:8080';
+// const API_ROOT = 'http://api.colombus.vn';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -106,7 +106,9 @@ const LaiXe = {
   PhuPhibyId: (id) =>
     requests.get(`/laixe/phuphi/get/${id}`),
   autofill: () =>
-    requests.get(`/laixe/autofill/all`)
+    requests.get(`/laixe/autofill/all`),
+  changePass: data =>
+    requests.post(`/laixe/users/password`, {data}),
 }
 
 const IT = {
@@ -116,10 +118,14 @@ const IT = {
     requests.post('/it/users/themdieuhanh', {data}),
   danhsachThauPhu: () =>
     requests.get('/it/users/danhsachthauphu'),
+  danhsachxe: () =>
+    requests.get('/it/xe/danhsachxe'),
   themLaiXe: data =>
     requests.post('/it/users/themlaixe', {data}),
   themAutoFill: (data) =>
-    requests.post(`/it/autofill/new`, data)
+    requests.post(`/it/autofill/new`, data),
+  themXe: data =>
+    requests.post('/it/xe/them', {data}),
 }
 
 const DieuHanh = {

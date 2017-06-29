@@ -15,12 +15,14 @@ import PhuCapMenuLaiXe from './components/laixe/PhuCapMenu';
 import LaiXeThemDO from './components/laixe/DO';
 import LaiXeListDO from './components/laixe/ListDO';
 import LaiXeEditDO from './components/laixe/EditDO';
+import LaiXePassword from './components/laixe/Password';
 
 import LaiXeThemPhuPhi from './components/laixe/PhuPhi';
 import LaiXeListPhuPhi from './components/laixe/ListPhuPhi';
 import LaiXeEditPhuPhi from './components/laixe/EditPhuPhi';
 
 import ThemLaiXe from './components/it/LaiXe';
+import ThemXe from './components/it/Xe';
 import ThemThauPhu from './components/it/ThauPhu';
 import ThemDieuHanh from './components/it/DieuHanh';
 import HomeIT from './components/it/Home';
@@ -47,6 +49,7 @@ ReactDOM.render((
 
           <Route path="laixe/themdo" component={LaiXeThemDO} />
           <Route path="laixe/danhsachdo" component={LaiXeListDO} />
+          <Route path="laixe/doimatkhau" component={LaiXePassword} />
           <Route path="laixe/do/:id" component={LaiXeEditDO} />
 
 
@@ -57,6 +60,7 @@ ReactDOM.render((
           <Route path="it" component={HomeIT} />
           <Route path="it/thauphu" component={ThemThauPhu} />
           <Route path="it/laixe" component={ThemLaiXe} />
+          <Route path="it/xe" component={ThemXe} />
           <Route path="it/dieuhanh" component={ThemDieuHanh} />
           <Route path="it/autofill" component={ThemAutoFill} />
           

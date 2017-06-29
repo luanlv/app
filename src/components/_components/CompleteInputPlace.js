@@ -19,7 +19,7 @@ class CompleteInput extends React.Component {
     })
 
     this.setState({
-      dataSource: !value ? [] : newOption.slice(0, 5).map((el, index) => { return el.value + ' - ' + el.code})
+      dataSource: !value ? [] : newOption.slice(0, 5).map((el, index) => { return el.value })
     });
 
   }
@@ -30,6 +30,7 @@ class CompleteInput extends React.Component {
       <AutoComplete
         dataSource={dataSource}
         style={{ width: this.props.isSmall ? "65%" : "100%" }}
+        value={this.props.value}
         onChange={(value) => {this.props.onChange(value)}}
         onSelect={(value) => {if(this.props.selectOption) this.props.selectOption(value)}}
         onSearch={this.handleSearch}

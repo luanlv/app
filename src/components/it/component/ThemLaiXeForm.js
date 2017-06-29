@@ -11,6 +11,7 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        values.xe = XeByBKS(values.bks, this.props.xe)
         agent.IT.themLaiXe(values)
           .then(res => {
             message.success('Them thanh cong')
@@ -33,10 +34,10 @@ class NormalLoginForm extends React.Component {
 
           <FormItem>
             {getFieldDecorator('username', {
-              rules: [{ required: true, message: 'Khong duoc de trong' }],
+              rules: [{ required: true, message: 'Không được để trống' }],
               initialValue: ' '
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />}
+              <Input prefix={<Icon type="edit" style={{ fontSize: 13 }} placeholder="Tài khoản" />}
                 onFocus={() => {
                   if(this.props.form.getFieldValue('username') === ' ') {
                     this.props.form.setFieldsValue({username: ''})
@@ -87,7 +88,26 @@ class NormalLoginForm extends React.Component {
               rules: [{ required: true, message: 'Không được để trống' }],
               // initialValue: this.props.defaultValue.username
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Tên lái xe" />
+              <Input prefix={<Icon type="edit" style={{ fontSize: 13 }} />} placeholder="Tên lái xe" />
+            )}
+          </FormItem>
+  
+          <FormItem>
+            {getFieldDecorator('bks', {
+              // rules: [{ required: true, message: 'Không được để trống' }],
+              // initialValue: this.props.defaultValue.password
+            })(
+              <Select
+                showSearch
+                // style={{ width: 200 }}
+                placeholder="xe"
+                optionFilterProp="children"
+                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+              >
+                {this.props.xe.map((el, index) => {
+                  return (<Option value={el.bks} key={index}>{el.name}</Option>)
+                })}
+              </Select>
             )}
           </FormItem>
 
@@ -110,3 +130,12 @@ NormalLoginForm.contextTypes = {
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 export default WrappedNormalLoginForm
+
+function XeByBKS(bks, list){
+  for(let i=0; i < list.length; i++){
+    if(list[i].bks === bks){
+      return list[i]
+    }
+  }
+  return {}
+}

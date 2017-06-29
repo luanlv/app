@@ -8,12 +8,15 @@ import {
   LAIXE_DO_LOADED
 } from '../../constants/actionTypes';
 
-import {Button, Row, Icon} from 'antd'
+import {Button, Row, Icon, Spin} from 'antd'
+import { List } from 'antd-mobile';
 import ReactList from 'react-list';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import moment from 'moment'
 
 const Promise = global.Promise;
+const Item = List.Item;
+const Brief = Item.Brief;
 
 const mapStateToProps = state => ({
   ...state.laixe,
@@ -52,53 +55,45 @@ class ListDO extends React.Component {
     return (
       <div className="listDO-page">
         <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Danh sach DO</h2>
-          {this.props.status.listDO && (
-              <div style={{overflow: 'auto', maxHeight: '80vh'}}>
-                <Table>
-                  <Thead>
-                  <Tr>
-                    <Th/>
-                    <Th>Mã DO: </Th>
-                    <Th>Điểm xuất phát: </Th>
-                    <Th>Điểm trả hàng:</Th>
-                    <Th>Số điểm trả hàng: </Th>
-                    {/*<Th>Xac Nhan</Th>*/}
-                  </Tr>
-                  </Thead>
-                  <Tbody>
-                  {this.props.listDO.map((el, index) => {
-                    return (
-                      <Tr key={index}>
-                        <Td>
-                          {
-                            !el.trangthai.daduyet && ((moment.utc(el.timeEdit).diff(moment(Date.now())) > 0) ?
-                              (<Link to={"/laixe/do/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: '#08c' }} /></Link>) :
-                              (<Link to={"/laixe/do/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: 'red' }} /></Link>)
-                            )
-                          }
-                          {el.trangthai.daduyet &&
-                            ((el.trangthai.duyet) ?
-                                (<Link to={"/laixe/do/" + el._id}><Icon type="check" style={{ fontSize: 32, color: '#08c' }} /></Link>) :
-                                (<Link to={"/laixe/do/" + el._id}><Icon type="close" style={{ fontSize: 32, color: 'red' }} /></Link>)
-                            )
-                          }
-                        </Td>
-                        <Td>{"DO" + (el._id + 10000)}</Td>
-                        <Td>{el.diemxuatphat}</Td>
-                        <Td>{el.diemtrahang}</Td>
-                        <Td>{el.sodiem}</Td>
-                        {/*<Td />*/}
-                      </Tr>
-                    )
-                    })
-                  }
-                  </Tbody>
-                </Table>
-              </div>
-          )}
+          <h2 className="mb20 mt10 textCenter">Lệnh điều động xe</h2>
+          {this.props.status.listDO && (<div>
+            {this.props.listDO.map((el, index) => {
+              return (
+                <Link to={"/laixe/do/" + el._id}
+                      key={index}
+                >
+                  <Item
+                    className="list-do"
+                    arrow="horizontal"
+                    multipleLine
+                    platform="android"
+                  >
+                    <b style={{color: 'red', fontWeight: 'bold'}}>{"DO" + (el._id + 10000)}</b>
+                    
+                    {!el.trangthai.daduyet && <b style={{color: 'orange'}}> [Đang chờ duyệt]</b> }
+                    {el.trangthai.daduyet && (
+                      ((el.trangthai.duyet) ?
+                          (<b style={{color: 'green'}}> [Xác nhận]</b>) :
+                          (<b style={{color: 'red'}}> [Hủy]</b>)
+                      )
+                    ) }
+                    
+                    <Brief>
+                      <b style={{color: '#FEC713'}}>{moment(el.time).format('DD/MM/YYYY')}</b> |
+                      <b style={{}}> {el.khachhang}</b>
+                    </Brief>
+                    <Brief><b style={{color: '#FE6A14'}}>{el.sodiem} điểm</b> | {el.diemxuatphat} -> {el.diemtrahang}</Brief>
+                  </Item>
+                </Link>
+              )
+            })
+          }
+          </div>)}
+          
           {!this.props.status.listDO && (
-            <div>Loading !!!</div>
+            <div style={{textAlign: 'center', paddingTop: 50}}>
+              <Spin  size="large" tip="Đang tải..." />
+            </div>
           )}
         </Row>
       </div>
