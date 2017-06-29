@@ -68,22 +68,22 @@ class DOPage extends React.Component {
             </div>
           )}
           {this.state.init && (
-            <div>
-              <h2 style={{textAlign: 'center'}}>Them Auto Fill</h2>
+            <div className="it">
+              <h2 style={{textAlign: 'center'}}>Thêm Auto Fill</h2>
               <ThemAutoFill
-                title="Khach Hang"
+                title="Khách hàng"
                 fieldName="khachhang"
               />
               <ThemAutoFill
-                title="Diem Xuat Phat"
+                title="Điểm xuất phát"
                 fieldName="diemxuatphat"
               />
               <ThemAutoFill
-                title="Diem Tra Hang"
+                title="Điểm trả hàng"
                 fieldName="diemtrahang"
               />
               <ThemAutoFill
-                title="Nguoi Yeu Cau"
+                title="Người yêu cầu"
                 fieldName="nguoiyeucau"
               />
             </div>

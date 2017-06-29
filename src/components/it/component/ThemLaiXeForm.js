@@ -22,44 +22,51 @@ class NormalLoginForm extends React.Component {
       }
     });
   }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form" autoComplete="off">
         <div className="groupWr">
-    
-          <h3 className="header">Tai khoan dang nhap</h3>
-    
+
+          <h3 className="header">Tài khoản đăng nhập</h3>
+
           <FormItem>
             {getFieldDecorator('username', {
               rules: [{ required: true, message: 'Khong duoc de trong' }],
-              // initialValue: this.props.defaultValue.username
+              initialValue: ' '
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Ten dang nhap" />
+              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />}
+                onFocus={() => {
+                  if(this.props.form.getFieldValue('username') === ' ') {
+                    this.props.form.setFieldsValue({username: ''})
+                  }
+                }}
+              />
             )}
           </FormItem>
-    
+
           <FormItem>
             {getFieldDecorator('password', {
-              rules: [{ required: true, message: 'Khong duoc de trong' }],
+              rules: [{ required: true, message: 'Không được để trống' }],
               // initialValue: this.props.defaultValue.password
             })(
-              <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Mat khau"
+              <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Mật khẩu"
                      onChange={() => {
                      }}
               />
             )}
           </FormItem>
-  
+
           <FormItem>
             {getFieldDecorator('thauphu', {
-              rules: [{ required: true, message: 'Khong duoc de trong' }],
+              rules: [{ required: true, message: 'Không được để trống' }],
               // initialValue: this.props.defaultValue.password
             })(
               <Select
                 showSearch
                 // style={{ width: 200 }}
-                placeholder="Chon nha thau phu"
+                placeholder="Thầu phụ"
                 optionFilterProp="children"
                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
               >
@@ -69,23 +76,23 @@ class NormalLoginForm extends React.Component {
               </Select>
             )}
           </FormItem>
-          
+
         </div>
-  
+
         <div className="groupWr">
-          <h3 className="header">Thong tin lai xe</h3>
-    
+          <h3 className="header">Thông tin lái xe</h3>
+
           <FormItem>
             {getFieldDecorator('name', {
-              rules: [{ required: true, message: 'Khong duoc de trong' }],
+              rules: [{ required: true, message: 'Không được để trống' }],
               // initialValue: this.props.defaultValue.username
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Ten lai xe" />
+              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Tên lái xe" />
             )}
           </FormItem>
-  
+
         </div>
-        
+
         <FormItem>
           <Button type="primary" htmlType="submit" className="login-form-button">
             Them moi

@@ -24,14 +24,20 @@ class NormalLoginForm extends React.Component {
       <Form onSubmit={this.handleSubmit} className="login-form" autoComplete="off">
         <div className="groupWr">
           
-          <h3 className="header">Tai khoan dang nhap</h3>
+          <h3 className="header">Tài khoản đăng nhập</h3>
           
           <FormItem>
             {getFieldDecorator('username', {
               rules: [{ required: true, message: 'Khong duoc de trong' }],
               initialValue: this.props.defaultValue.username
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Ten dang nhap" />
+              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder=""
+                     onFocus={() => {
+                       if(this.props.form.getFieldValue('username') === ' ') {
+                         this.props.form.setFieldsValue({username: ''})
+                       }
+                     }}
+              />
             )}
           </FormItem>
           
@@ -40,7 +46,7 @@ class NormalLoginForm extends React.Component {
               rules: [{ required: true, message: 'Khong duoc de trong' }],
               initialValue: this.props.defaultValue.password
             })(
-              <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Mat khau"
+              <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder=""
                 onChange={() => {
                   console.log(this.state)
                 }}
@@ -50,14 +56,14 @@ class NormalLoginForm extends React.Component {
         </div>
   
         <div className="groupWr">
-          <h3 className="header">Thong tin thau phu</h3>
+          <h3 className="header">Thông tin thầu phụ</h3>
   
           <FormItem>
             {getFieldDecorator('name', {
               rules: [{ required: true, message: 'Khong duoc de trong' }],
               initialValue: this.props.defaultValue.username
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Ten thau phu" />
+              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="" />
             )}
           </FormItem>
           

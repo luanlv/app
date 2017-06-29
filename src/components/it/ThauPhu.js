@@ -60,7 +60,7 @@ class DOPage extends React.Component {
     return (
       <div className="do-page">
         <div className="laixe-doWr">
-          <h2 className="mb20" style={{textAlign: 'center', paddingTop: 20}}>Them thau phu</h2>
+          <h2 className="mb20" style={{textAlign: 'center', paddingTop: 20}}>Thêm thầu phụ</h2>
           <ThemThauPhuForm
             defaultValue={{}}
           />

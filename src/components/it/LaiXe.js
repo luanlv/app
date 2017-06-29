@@ -77,9 +77,8 @@ class DOPage extends React.Component {
           )}
           {this.state.init && (
             <div>
-              <h2 style={{textAlign: 'center'}}>Them lai xe</h2>
+              <h2 style={{textAlign: 'center'}}>Thêm lái xe</h2>
               <ThemLaiXeForm
-                defaultValue={{username: 'luan123'}}
                 thauphu={this.state.thauphu}
               />
             </div>

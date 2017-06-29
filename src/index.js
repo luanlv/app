@@ -10,6 +10,8 @@ import App from './components/App';
 import Home from './components/Home';
 
 import HomeLaiXe from './components/laixe/Home';
+import DoMenuLaiXe from './components/laixe/DoMenu';
+import PhuCapMenuLaiXe from './components/laixe/PhuCapMenu';
 import LaiXeThemDO from './components/laixe/DO';
 import LaiXeListDO from './components/laixe/ListDO';
 import LaiXeEditDO from './components/laixe/EditDO';
@@ -40,11 +42,14 @@ ReactDOM.render((
           <IndexRoute component={Home} />
           
           <Route path="laixe" component={HomeLaiXe} />
-          
+          <Route path="laixe/do" component={DoMenuLaiXe} />
+          <Route path="laixe/phucap" component={PhuCapMenuLaiXe} />
+
           <Route path="laixe/themdo" component={LaiXeThemDO} />
           <Route path="laixe/danhsachdo" component={LaiXeListDO} />
           <Route path="laixe/do/:id" component={LaiXeEditDO} />
-          
+
+
           <Route path="laixe/themphuphi" component={LaiXeThemPhuPhi} />
           <Route path="laixe/danhsachphuphi" component={LaiXeListPhuPhi} />
           <Route path="laixe/phuphi/:id" component={LaiXeEditPhuPhi} />

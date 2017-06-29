@@ -20,9 +20,8 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
-// import CompleteInput  from './component/Complete'
+import CompleteInput  from './component/Complete'
 
-import {slugify} from '../_function'
 
 const Promise = global.Promise;
 
@@ -41,40 +40,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch({  type: HOME_PAGE_UNLOADED })
 });
 
-class CompleteInput extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      data: {},
-      dataSource: [],
-      option : props.option || []
-    }
-  }
-
-  handleSearch = (value) => {
-    let newOption = this.state.option.filter(option => {
-      return slugify(option.toLowerCase()).indexOf(slugify(value.toLowerCase())) >= 0
-    })
-
-    this.setState({
-      dataSource: !value ? [] : newOption.slice(0, 5)
-    });
-
-  }
-
-  render() {
-    const { dataSource } = this.state;
-    return (
-      <AutoComplete
-        dataSource={dataSource}
-        style={{ width: '100%' }}
-        onChange={(value) => this.props.onChange(value)}
-        onSearch={this.handleSearch}
-      />
-    );
-  }
-
-}
 
 class DOPage extends React.Component {
 
