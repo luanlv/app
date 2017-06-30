@@ -56,6 +56,13 @@ class Home extends React.Component {
             </Link>
           </div>
         </WingBlank>
+        <div className="updateButton">
+          <Link to="/laixe">
+            <Button type="primary"
+                    style={{width: 200, height: 60, fontSize: 30}}
+            >Quay lại</Button>
+          </Link>
+        </div>
       </div>
     );
   }

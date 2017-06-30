@@ -48,24 +48,21 @@ class Home extends React.Component {
       <div className="home-page">
         <WingBlank>
           <div className="btn-container">
-            <Link to="/laixe/do">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Lệnh điều động xe</Button>
+            <Link to="/laixe/themphuphi">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Thêm mới</Button>
             </Link>
-            <Link to="/laixe/phuphi">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Phụ phí</Button>
+            <Link to="/laixe/danhsachphuphi">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Danh sách</Button>
             </Link>
-            
-            {/*<Link to="/laixe/phucap">*/}
-              {/*<Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Thông tin</Button>*/}
-            {/*</Link>*/}
-
-            <Link to="/laixe/doimatkhau">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Đổi mật khẩu</Button>
-            </Link>
-
-
           </div>
         </WingBlank>
+        <div className="updateButton">
+          <Link to="/laixe">
+            <Button type="primary"
+                    style={{width: 200, height: 60, fontSize: 30}}
+            >Quay lại</Button>
+          </Link>
+        </div>
       </div>
     );
   }

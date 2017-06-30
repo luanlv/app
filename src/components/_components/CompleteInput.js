@@ -26,9 +26,11 @@ class CompleteInput extends React.Component {
 
   render() {
     const { dataSource } = this.state;
+    console.log(this.props.defaultValue)
     return (
       <AutoComplete
         dataSource={dataSource}
+        defaultValue={this.props.defaultValue}
         style={{ width: this.props.isSmall ? "65%" : "100%" }}
         onChange={(value) => {this.props.onChange(value)}}
         onSelect={(value) => {if(this.props.selectOption) this.props.selectOption(value)}}

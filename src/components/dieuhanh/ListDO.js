@@ -8,12 +8,16 @@ import {
   LAIXE_DO_LOADED
 } from '../../constants/actionTypes';
 
-import {Button, Row, Icon, Spin, message} from 'antd'
+import {Row, Icon, Spin, message} from 'antd'
+import { List, Modal, Button } from 'antd-mobile';
 import ReactList from 'react-list';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import moment from 'moment'
 
 const Promise = global.Promise;
+const Item = List.Item;
+const Brief = Item.Brief;
+const operation = Modal.operation;
 
 const mapStateToProps = state => ({
   ...state.laixe,
@@ -59,13 +63,14 @@ class ListDO extends React.Component {
   }
 
   duyet(id, action){
+    let that = this
     agent.DieuHanh.duyet(id, action)
       .then(res => {
-        message.success("Duyet thanh cong")
-        this.init()
+        message.success("Duyệt thành công")
+        that.init()
       })
       .catch(err => {
-        message.success("Co loi")
+        message.success("Có lỗi")
       })
   }
 
@@ -74,46 +79,76 @@ class ListDO extends React.Component {
     return (
       <div className="listDO-page">
         <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Danh sach DO</h2>
+          <h2 className="mb20 mt10 textCenter">Danh sách chờ duyệt</h2>
+          <div
+            className="updateButton"
+          >
+            <Button type="primary"
+              onClick={() => {this.init()}}
+            >Cập nhập</Button>
+          </div>
           {this.state.init && (
-              <div style={{overflow: 'auto', maxHeight: '80vh'}}>
-                <Table>
-                  <Thead>
-                  <Tr>
-                    <Th/>
-                    <Th>Ma DO</Th>
-                    <Th>Lai xe</Th>
-                    <Th>Diem di</Th>
-                    <Th>Diem den</Th>
-                    <Th>So Diem</Th>
-                    <Th>Xac Nhan</Th>
-                  </Tr>
-                  </Thead>
-                  <Tbody>
+              <div>
                   {this.state.listDO.map((el, index) => {
                     return (
-                      <Tr key={index}>
-                        <Td>
-                          <Icon type="eye" style={{cursor: 'pointer', fontSize: 32, color: '#08c' }} />
-                        </Td>
-                        <Td>{"DO" + (el._id + 10000)}</Td>
-                        <Td>{el.laixe[0].name}</Td>
-                        <Td>{el.diemxuatphat}</Td>
-                        <Td>{el.diemtrahang}</Td>
-                        <Td>{el.sodiem}</Td>
-                        <Td>
-                          <Button style={{margin: 5}} type="primary"
-                            onClick={() => {this.duyet(el._id, true)}}
-                          >Dong y</Button>
-                          <Button style={{margin: 5}} type="danger"
-                            onClick={() => {this.duyet(el._id, false)}}
-                          >Khong dong y</Button></Td>
-                      </Tr>
-                    )
+                        <Item
+                          extra={<div>
+                            <Row>
+                              <Button
+                                type="primary"
+                                onClick={() => operation([
+                                  { text: 'Xác nhận ', onPress: () => {
+                                    let that = this;
+                                    this.duyet(el._id, true)
+                                  } },
+                                  { text: 'Quay lại', onPress: () => {} },
+                                ])}
+                              >Đồng ý</Button>
+                            </Row>
+                            <Row style={{marginTop: 10}}>
+                              <Button
+                                type="warning"
+                                onClick={() => operation([
+                                { text: 'Xác nhận ', onPress: () => {
+                                  let that = this;
+                                  this.duyet(el._id, false)
+                                  
+                                } },
+                                { text: 'Quay lại', onPress: () => {} },
+                              ])}
+                              >Hủy</Button>
+                            </Row>
+                            <Row style={{marginTop: 10}}>
+                              <Link  to={'/dieuhanh/do/' + el._id}><Button type="ghost">Xem</Button></Link>
+                            </Row>
+                          </div>}
+                          className="list-do"
+                          multipleLine
+                          platform="android"
+                          key={index}
+                        >
+                          <b style={{color: 'red', fontWeight: 'bold'}}>{"DO" + (el._id + 10000)}</b>
+      
+                          {!el.trangthai.daduyet && <b style={{color: 'orange'}}> [Đang chờ duyệt]</b> }
+                          {el.trangthai.daduyet && (
+                            ((el.trangthai.duyet) ?
+                                (<b style={{color: 'green'}}> [Xác nhận]</b>) :
+                                (<b style={{color: 'red'}}> [Hủy]</b>)
+                            )
+                          ) }
+      
+                          <Brief>
+                            <b style={{color: '#FEC713'}}>{moment(el.time).format('DD/MM/YYYY')}</b> |
+                            <b style={{}}> {el.khachhang}</b>
+                          </Brief>
+                          <Brief><b style={{color: '#FE6A14'}}>{el.sodiem} điểm</b> | {el.diemxuatphat} -> {el.diemtrahang}</Brief>
+                          <Brief><b style={{color: 'blue'}}>{el.laixe[0].name}</b></Brief>
+                          {el.tienthu > 0 && <Brief>Thu hộ: <b style={{color: '#FE6A14'}}>{el.tienthu.toLocaleString()} đ</b></Brief>}
+                          {el.tienphatsinh > 0 && <Brief>Phí phát sinh: <b style={{color: '#FE6A14'}}>{el.tienphatsinh.toLocaleString()} đ</b></Brief>}
+                        </Item>
+                      )
                     })
                   }
-                  </Tbody>
-                </Table>
               </div>
           )}
           {!this.state.init && (

@@ -11,8 +11,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber} from 'antd'
-const Option = Select.Option;
-
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import {
@@ -22,7 +20,7 @@ import {
 } from '../../constants/actionTypes';
 import CompleteInput  from './component/Complete'
 
-
+const Option = Select.Option;
 const Promise = global.Promise;
 
 const mapStateToProps = state => ({

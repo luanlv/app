@@ -11,6 +11,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber} from 'antd'
+import {Link} from 'react-router';
 import moment from 'moment';
 import agent from '../../agent';
 import { connect } from 'react-redux';
@@ -92,7 +93,7 @@ class DOPage extends React.Component {
         let PhuPhi = res[0]
         that.setState(prev => { return {
           ...prev,
-          edit: (moment(PhuPhi.timeEdit).diff(moment(Date.now())) > 0),
+          edit: (moment(PhuPhi.time).diff(moment(Date.now() - 2*60*60*1000)) > 0) && !PhuPhi.trangthai.daduyet,
           init: true,
           data: PhuPhi
         }})
@@ -119,34 +120,52 @@ class DOPage extends React.Component {
         return (
           <div className="do-page">
             <div className="laixe-doWr">
-              <h2 className="mt10 mt20 textCenter">Phu phi</h2>
-
+              <h2 className="mt10 mt20 textCenter">Phụ phí</h2>
+  
               <div>
-                <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Khoan Chi : </span><b>{this.state.data.khoanchi}</b>
+                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Ngày: </span><b>{moment(this.state.data.time).format('DD/MM/YYYY')}</b>
+              </div>
+              
+              <div>
+                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Khoản chi: </span><b>{this.state.data.khoanchi}</b>
               </div>
 
               <div>
-                <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền : </span><b>{this.state.data.sotien } VNĐ</b>
+                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền: </span><b>{this.state.data.sotien.toLocaleString() } đ</b>
               </div>
-
+  
               <div>
-                <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người duyệt : </span><b>Đang xử lý</b>
+                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trạng thái: </span>
+                <b>
+                  {!this.state.data.trangthai.daduyet ? ("Đang xử lý") : (this.state.data.trangthai.duyet ? ("Đồng ý") : ("Hủy"))}
+                </b>
               </div>
+              
+            </div>
+            <div className="updateButton">
+              <Link to="/laixe/danhsachphuphi">
+                <Button type="primary"
+                        style={{width: 200, height: 60, fontSize: 30}}
+                >Quay lại</Button>
+              </Link>
             </div>
           </div>
         )
       }
       return (
         <div className="do-page">
-          <div className="laixe-doWr">
-            <h2 style={{textAlign: 'center'}}>Phu phi</h2>
+          {this.state.init && (<div className="laixe-doWr">
+            <h2 style={{textAlign: 'center'}}>Thêm các loại phụ phí</h2>
+      
             <Row>
-              Ly Do:
-              <CompleteInput
-                option={[
-
-                ]}
+              Lý do:<CompleteInput
                 defaultValue={this.state.data.khoanchi}
+                option={[
+                  "Tiền dầu",
+                  "Tiền luật",
+                  "Tiền nước",
+                  "Tiền nhà nghỉ",
+                ]}
                 onChange={(value) => {
                   this.setState(prev => {
                     return {
@@ -159,19 +178,19 @@ class DOPage extends React.Component {
                   })
                 }}
               />
-
             </Row>
-
+      
             <Row style={{marginTop: 10}}>
               Số Tiền:
               <InputNumber
+                disabled={!this.state.edit}
                 defaultValue={this.state.data.sotien}
                 min={0}
                 formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
                 parser={value => value.replace(/(,*)/g, '')}
                 style={{width: '100%'}}
                 onChange={(value) => {
-                  if (parseInt(value).isNaN) {
+                  if(parseInt(value).isNaN){
                     value = 0;
                   }
                   this.setState(prev => {
@@ -187,22 +206,37 @@ class DOPage extends React.Component {
               />
             </Row>
             <Row style={{marginTop: 10}}>
-              <Button type="primary"
-                      onClick={() => {
-                        console.log(gThis.state.data)
-                        agent.LaiXe.capnhapPhuPhi(gThis.state.data)
-                          .then(res => {
-                            message.success("Cap nhap thành công")
-                          })
-                          .catch(err => {
-                            message.error("Cap nhap that bai")
-                          })
-                      }}
+              <Button
+                style={{width: 200, height: 60, fontSize: 40}}
+                type="primary"
+                onClick={() => {
+                  agent.LaiXe.capnhapPhuPhi(gThis.state.data)
+                    .then(res => {
+                      // this.context.router.replace('/laixe/danhsachphuphi');
+                      message.success("Cập nhập thành công")
+                    })
+                    .catch(err => {
+                      message.success("Cập nhập that bai")
+                    })
+                }}
               >
-                Cap nhap
+                Cập nhập
               </Button>
+              <div className="updateButton">
+                <Link to="/laixe/danhsachphuphi">
+                  <Button type="primary"
+                          style={{width: 200, height: 60, fontSize: 30}}
+                  >Quay lại</Button>
+                </Link>
+              </div>
             </Row>
-          </div>
+          </div>)}
+  
+          {!this.state.init && (
+            <div style={{textAlign: 'center', paddingTop: 50}}>
+              <Spin  size="large" tip="Đang tải..." />
+            </div>
+          )}
         </div>
       )
     }

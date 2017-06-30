@@ -9,6 +9,7 @@ import {
 } from '../../constants/actionTypes';
 
 import {Button, Row} from 'antd'
+import { Flex, WingBlank } from 'antd-mobile';
 
 
 const Promise = global.Promise;
@@ -40,20 +41,17 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <Row className="homeWr">
-          
-          <Link to="/dieuhanh/do">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">DO</Button>
-          </Link>
-          
-          <Link to="/dieuhanh/phuphi">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Phu phi</Button>
-          </Link>
+          <WingBlank>
+            <div className="btn-container">
+              <Link to="/dieuhanh/do">
+                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Lệnh điều động xe</Button>
+              </Link>
+              
+              <Link to="/dieuhanh/phuphi">
+                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Phụ phí</Button>
+              </Link>
+            </div>
+          </WingBlank>
         </Row>
       </div>
     );

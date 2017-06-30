@@ -10,7 +10,7 @@
 
 import React from 'react';
 import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber} from 'antd'
-
+import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 
 import agent from '../../agent';
@@ -103,15 +103,16 @@ class DOPage extends React.Component {
     return (
       <div className="do-page">
         <div className="laixe-doWr">
-          <h2 style={{textAlign: 'center'}}>Them cac loai phu phi</h2>
+          <h2 style={{textAlign: 'center'}}>Thêm các loại phụ phí</h2>
 
           <Row>
-            Ly do:
+            Lý do:
             <CompleteInput
               option={[
-                "KH1 - Khách hàng 1",
-                "KH2 - Khách hàng 2",
-                "KH3 - Khách hàng 3"
+                "Tiền dầu",
+                "Tiền luật",
+                "Tiền nước",
+                "Tiền nhà nghỉ",
               ]}
               onChange={(value) => {
                 this.setState(prev => {
@@ -152,7 +153,9 @@ class DOPage extends React.Component {
             />
           </Row>
           <Row style={{marginTop: 10}}>
-            <Button type="primary"
+            <Button
+              style={{width: 200, height: 60, fontSize: 40}}
+              type="primary"
                     onClick={() => {
                       console.log(gThis.state.data)
                       agent.LaiXe.themPhuPhi(gThis.state.data)

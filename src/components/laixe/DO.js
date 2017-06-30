@@ -347,7 +347,7 @@ class DOPage extends React.Component {
               <Col span={12}>
                 Tiền thu hộ:
                 <InputNumber
-                  defaultValue={0}
+                  defaultValue={this.state.data.tienthu}
                   min={0}
                   formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
                   parser={value => value.replace(/(,*)/g, '')}
@@ -373,7 +373,7 @@ class DOPage extends React.Component {
             <Row style={{marginTop: 10}}>
                .{this.props.xe.bks && !this.state.doixe && (<span>Xe chở hàng: <b style={{color: 'red', fontWeight: 'bold'}}>{this.props.xe.bks}</b> - <i>{this.props.xe.trongtai} tấn</i></span>) }
               
-              <span  style={{float: 'right'}}> Đi tạm xe? <Switch defaultChecked={false} onChange={(value) => {
+              <span  style={{float: 'right'}}> Đi xe khác: <Switch defaultChecked={false} onChange={(value) => {
               this.setState(prev => { return {
                 ...prev,
                 doixe: value

@@ -8,12 +8,16 @@ import {
   LAIXE_PHUPHI_LOADED
 } from '../../constants/actionTypes';
 
-import {Button, Row, Icon} from 'antd'
+import { Row, Icon, Spin, message} from 'antd'
+import { List, Modal, Button } from 'antd-mobile';
 import ReactList from 'react-list';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import moment from 'moment'
 
 const Promise = global.Promise;
+const Item = List.Item;
+const Brief = Item.Brief;
+const operation = Modal.operation;
 
 const mapStateToProps = state => ({
   ...state.laixe,
@@ -30,64 +34,116 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ListDO extends React.Component {
-
+  
   constructor(props){
     super(props)
-    console.log(this.props)
+    this.state = {
+      init: false,
+      listPhuPhi: []
+    }
   }
-
+  
   componentWillMount() {
-    const articlesPromise = agent.LaiXe.listPhuPhi
-    this.props.onLoad(Promise.all([articlesPromise()]));
+    this.init()
+  }
+  
+  init() {
+    agent.DieuHanh.listPhuPhi()
+      .then(res => {
+        this.setState(prev => { return {
+          ...prev,
+          init: true,
+          listPhuPhi: res
+        }})
+      })
   }
 
   componentWillUnmount() {
     // this.props.onUnload();
   }
-
-
+  
+  duyet(id, action){
+    let that = this
+    agent.DieuHanh.duyetphuphi(id, action)
+      .then(res => {
+        message.success("Duyệt thành công")
+        that.init()
+      })
+      .catch(err => {
+        message.success("Có lỗi")
+      })
+  }
 
   render() {
 
     return (
       <div className="listDO-page">
         <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Danh sach DO</h2>
-          {this.props.status.listPhuPhi && (
-              <div style={{overflow: 'auto', maxHeight: '80vh'}}>
-                <Table>
-                  <Thead>
-                  <Tr>
-                    <Th/>
-                    <Th>Ly do</Th>
-                    <Th>So tien</Th>
-                  </Tr>
-                  </Thead>
-                  <Tbody>
-                  {this.props.listPhuPhi.map((el, index) => {
+          <h2 className="mb20 mt10 textCenter">Phụ phí chưa duyệt</h2>
+          <div
+            className="updateButton"
+          >
+            <Button type="primary"
+                    onClick={() => {this.init()}}
+            >Cập nhập</Button>
+          </div>
+          {this.state.init && (
+              <div>
+                  {this.state.listPhuPhi.map((el, index) => {
                     return (
-                      <Tr key={index}>
-                        <Td>
-                          {
-                            (moment(el.timeEdit).diff(moment(Date.now())) > 0) ?
-                              (<Link to={"/laixe/phuphi/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: '#08c' }} /></Link>) :
-                              (<Link to={"/laixe/phuphi/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: 'red' }} /></Link>)
-                          }
-                        </Td>
-
-                        <Td>{el.khoanchi}</Td>
-                        <Td>{el.sotien}</Td>
-                        <Td />
-                      </Tr>
+                      <Item
+                        extra={<div>
+                          <Row>
+                            <Button
+                              type="primary"
+                              onClick={() => operation([
+                                { text: 'Xác nhận ', onPress: () => {
+                                  let that = this;
+                                  this.duyet(el._id, true)
+                                } },
+                                { text: 'Quay lại', onPress: () => {} },
+                              ])}
+                            >Đồng ý</Button>
+                          </Row>
+                          <Row style={{marginTop: 10}}>
+                            <Button
+                              type="warning"
+                              onClick={() => operation([
+                                { text: 'Xác nhận ', onPress: () => {
+                                  let that = this;
+                                  this.duyet(el._id, false)
+              
+                                } },
+                                { text: 'Quay lại', onPress: () => {} },
+                              ])}
+                            >Hủy</Button>
+                          </Row>
+                          <Row style={{marginTop: 10}}>
+                            <Link  to={'/dieuhanh/phuphi/' + el._id}><Button type="ghost">Xem</Button></Link>
+                          </Row>
+                        </div>}
+                        className="list-do"
+                        multipleLine
+                        platform="android"
+                        key={index}
+                      >
+                        <b style={{color: 'red', fontWeight: 'bold'}}>{el.sotien.toLocaleString()} đ</b>
+    
+                        <Brief>
+                          <b style={{color: '#FEC713'}}>{moment(el.time).format('DD/MM/YYYY')}</b>
+                        </Brief>
+                        <Brief>{el.lydo} </Brief>
+                        <Brief><b style={{color: 'blue'}}>{el.laixe[0].name}</b></Brief>
+                      </Item>
                     )
                     })
                   }
-                  </Tbody>
-                </Table>
               </div>
           )}
-          {!this.props.status.listPhuPhi && (
-            <div>Loading !!!</div>
+          {!this.state.init && (
+            <div style={{textAlign: 'center', paddingTop: 50}}>
+              <Spin tip="Loading..." />
+            </div>
           )}
         </Row>
       </div>

@@ -11,7 +11,8 @@ import Home from './components/Home';
 
 import HomeLaiXe from './components/laixe/Home';
 import DoMenuLaiXe from './components/laixe/DoMenu';
-import PhuCapMenuLaiXe from './components/laixe/PhuCapMenu';
+import PhuPhiMenuLaiXe from './components/laixe/PhuPhiMenu';
+import EditPhuPhiLaiXe from './components/laixe/EditPhuPhi';
 import LaiXeThemDO from './components/laixe/DO';
 import LaiXeListDO from './components/laixe/ListDO';
 import LaiXeEditDO from './components/laixe/EditDO';
@@ -31,6 +32,9 @@ import ThemAutoFill from './components/it/AutoFill';
 
 import HomeDieuHanh from './components/dieuhanh/Home';
 import DieuHanhDO from './components/dieuhanh/ListDO';
+import DieuHanhPhuPhi from './components/dieuhanh/ListPhuPhi';
+import DieuHanhEditDO from './components/dieuhanh/EditDO';
+import DieuHanhEditPhuPhi from './components/dieuhanh/EditPhuPhi';
 
 import HomeThauPhu from './components/thauphu/Home';
 import ThauPhuDanhSachLaiXe from './components/thauphu/ListLaiXe';
@@ -45,7 +49,8 @@ ReactDOM.render((
           
           <Route path="laixe" component={HomeLaiXe} />
           <Route path="laixe/do" component={DoMenuLaiXe} />
-          <Route path="laixe/phucap" component={PhuCapMenuLaiXe} />
+          <Route path="laixe/phuphi" component={PhuPhiMenuLaiXe} />
+          <Route path="laixe/phuphi/:id" component={EditPhuPhiLaiXe} />
 
           <Route path="laixe/themdo" component={LaiXeThemDO} />
           <Route path="laixe/danhsachdo" component={LaiXeListDO} />
@@ -66,6 +71,9 @@ ReactDOM.render((
           
           <Route path="dieuhanh" component={HomeDieuHanh} />
           <Route path="dieuhanh/do" component={DieuHanhDO} />
+          <Route path="dieuhanh/do/:id" component={DieuHanhEditDO} />
+          <Route path="dieuhanh/phuphi" component={DieuHanhPhuPhi} />
+          <Route path="dieuhanh/phuphi/:id" component={DieuHanhEditPhuPhi} />
           
           <Route path="thauphu" component={HomeThauPhu} />
           <Route path="thauphu/laixe" component={ThauPhuDanhSachLaiXe} />

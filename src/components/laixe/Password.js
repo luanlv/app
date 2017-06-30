@@ -10,7 +10,7 @@
 
 import React from 'react';
 import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber} from 'antd'
-
+import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 
 import agent from '../../agent';
@@ -150,6 +150,13 @@ class DOPage extends React.Component {
             >
               Đổi mật khẩu
             </Button>
+            <div className="updateButton">
+              <Link to="/laixe">
+                <Button type="primary"
+                        style={{width: 200, height: 60, fontSize: 30}}
+                >Quay lại</Button>
+              </Link>
+            </div>
           </Row>
         </div>
       </div>

@@ -11,7 +11,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber} from 'antd'
-const Option = Select.Option;
 import moment from 'moment';
 import agent from '../../agent';
 import { connect } from 'react-redux';
@@ -20,10 +19,11 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
+import {Link} from 'react-router'
 // import CompleteInput  from './component/Complete'
-
 import {slugify} from '../_function'
 
+const Option = Select.Option;
 const Promise = global.Promise;
 
 const mapStateToProps = state => ({
@@ -48,18 +48,18 @@ class CompleteInput extends React.Component {
       option : props.option || []
     }
   }
-
+  
   handleSearch = (value) => {
     let newOption = this.state.option.filter(option => {
       return slugify(option.toLowerCase()).indexOf(slugify(value.toLowerCase())) >= 0
     })
-
+    
     this.setState({
       dataSource: !value ? [] : newOption.slice(0, 5)
     });
-
+    
   }
-
+  
   render() {
     const { dataSource } = this.state;
     return (
@@ -72,11 +72,11 @@ class CompleteInput extends React.Component {
       />
     );
   }
-
+  
 }
 
 class DOPage extends React.Component {
-
+  
   constructor(props){
     super(props)
     this.state = {
@@ -85,15 +85,15 @@ class DOPage extends React.Component {
       data: {}
     }
   }
-
+  
   componentWillMount() {
     let that = this;
-    agent.LaiXe.PhuPhibyId(this.props.params.id)
+    agent.DieuHanh.PhuPhibyId(this.props.params.id)
       .then(res => {
-        let PhuPhi = res[0]
+        let PhuPhi = res
         that.setState(prev => { return {
           ...prev,
-          edit: (moment(PhuPhi.timeEdit).diff(moment(Date.now())) > 0),
+          edit: (moment(PhuPhi.time).diff(moment(Date.now() - 24*60*60*1000)) > 0),
           init: true,
           data: PhuPhi
         }})
@@ -102,11 +102,11 @@ class DOPage extends React.Component {
         console.log(err)
       })
   }
-
+  
   componentWillUnmount() {
     this.props.onUnload();
   }
-
+  
   render() {
     let gThis = this
     if(!this.state.init){
@@ -121,15 +121,15 @@ class DOPage extends React.Component {
           <div className="do-page">
             <div className="laixe-doWr">
               <h2 className="mt10 mt20 textCenter">Phu phi</h2>
-
+              
               <div>
                 <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Khoan Chi : </span><b>{this.state.data.khoanchi}</b>
               </div>
-
+              
               <div>
                 <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền : </span><b>{this.state.data.sotien } VNĐ</b>
               </div>
-
+              
               <div>
                 <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người duyệt : </span><b>Đang xử lý</b>
               </div>
@@ -139,15 +139,24 @@ class DOPage extends React.Component {
       }
       return (
         <div className="do-page">
-          <div className="laixe-doWr">
-            <h2 style={{textAlign: 'center'}}>Phu phi</h2>
+          {this.state.init && (<div className="laixe-doWr">
+            <h2 style={{textAlign: 'center'}}>Thêm các loại phụ phí</h2>
             <Row>
-              Ly Do:
+              Lái xe : {this.state.data.laixe[0].name}
+              <br/>
+              Thời gian : {moment(this.state.data.time).format('DD/MM/YYYY')}
+            </Row>
+            <Row>
+              Lý do:
               <CompleteInput
-                option={[
-
-                ]}
+                disabled={!this.state.edit}
                 defaultValue={this.state.data.khoanchi}
+                option={[
+                  "Tiền dầu",
+                  "Tiền luật",
+                  "Tiền nước",
+                  "Tiền nhà nghỉ",
+                ]}
                 onChange={(value) => {
                   this.setState(prev => {
                     return {
@@ -160,19 +169,19 @@ class DOPage extends React.Component {
                   })
                 }}
               />
-
             </Row>
-
+            
             <Row style={{marginTop: 10}}>
               Số Tiền:
               <InputNumber
+                disabled={!this.state.edit}
                 defaultValue={this.state.data.sotien}
                 min={0}
                 formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
                 parser={value => value.replace(/(,*)/g, '')}
                 style={{width: '100%'}}
                 onChange={(value) => {
-                  if (parseInt(value).isNaN) {
+                  if(parseInt(value).isNaN){
                     value = 0;
                   }
                   this.setState(prev => {
@@ -188,27 +197,42 @@ class DOPage extends React.Component {
               />
             </Row>
             <Row style={{marginTop: 10}}>
-              <Button type="primary"
-                      onClick={() => {
-                        console.log(gThis.state.data)
-                        agent.LaiXe.capnhapPhuPhi(gThis.state.data)
-                          .then(res => {
-                            message.success("Cap nhap thành công")
-                          })
-                          .catch(err => {
-                            message.error("Cap nhap that bai")
-                          })
-                      }}
+              <Button
+                style={{width: 200, height: 60, fontSize: 40}}
+                type="primary"
+                onClick={() => {
+                  agent.DieuHanh.capnhapPhuPhi(gThis.state.data)
+                    .then(res => {
+                      // this.context.router.replace('/laixe/danhsachphuphi');
+                      message.success("Cập nhập thành công")
+                    })
+                    .catch(err => {
+                      message.success("Cập nhập that bai")
+                    })
+                }}
               >
-                Cap nhap
+                Cập nhập
               </Button>
+              <div className="updateButton">
+                <Link to="/dieuhanh/phuphi">
+                  <Button type="primary"
+                          style={{width: 200, height: 60, fontSize: 30}}
+                  >Quay lại</Button>
+                </Link>
+              </div>
             </Row>
-          </div>
+          </div>)}
+          
+          {!this.state.init && (
+            <div style={{textAlign: 'center', paddingTop: 50}}>
+              <Spin  size="large" tip="Đang tải..." />
+            </div>
+          )}
         </div>
       )
     }
   }
-
+  
 }
 
 DOPage.contextTypes = {

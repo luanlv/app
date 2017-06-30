@@ -132,7 +132,21 @@ const DieuHanh = {
   listDOchuaxacnhan: () =>
     requests.get('/dieuhanh/do/chuaxacnhan'),
   duyet: (id, action) =>
-    requests.post('/dieuhanh/do/duyet', {id: id, action: action})
+    requests.post('/dieuhanh/do/duyet', {id: id, action: action}),
+  duyetphuphi: (id, action) =>
+    requests.post('/dieuhanh/phuphi/duyet', {id: id, action: action}),
+  DObyId: (id) =>
+    requests.get(`/dieuhanh/do/get/${id}`),
+  autofill: () =>
+    requests.get(`/dieuhanh/autofill/all`),
+  capnhapDO: data =>
+    requests.post('/dieuhanh/do/capnhap', {data}),
+  listPhuPhi: () =>
+    requests.get(`/dieuhanh/phuphi/chuaxacnhan`),
+  PhuPhibyId: (id) =>
+    requests.get(`/dieuhanh/phuphi/get/${id}`),
+  capnhapPhuPhi: data =>
+    requests.post('/dieuhanh/phuphi/capnhap', {data}),
 }
 
 const ThauPhu = {
