@@ -77,9 +77,9 @@ class ListDO extends React.Component {
   render() {
     let that = this
     return (
-      <div className="listDO-page">
-        <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Danh sách chờ duyệt</h2>
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <Row className="laixe-listDO-Wr" style={{paddingTop: '0.3rem', paddingBottom: '1rem'}}>
+          <h2 className="textCenter" style={{fontSize: '0.8rem', paddingBottom: '0.3rem'}}>Danh sách chờ duyệt</h2>
           <div
             className="updateButton"
           >
@@ -118,9 +118,9 @@ class ListDO extends React.Component {
                               ])}
                               >Hủy</Button>
                             </Row>
-                            <Row style={{marginTop: 10}}>
-                              <Link  to={'/dieuhanh/do/' + el._id}><Button type="ghost">Xem</Button></Link>
-                            </Row>
+                            {/*<Row style={{marginTop: 10}}>*/}
+                              {/*<Link  to={'/dieuhanh/do/' + el._id}><Button type="ghost">Xem</Button></Link>*/}
+                            {/*</Row>*/}
                           </div>}
                           className="list-do"
                           multipleLine
@@ -141,10 +141,10 @@ class ListDO extends React.Component {
                             <b style={{color: '#FEC713'}}>{moment(el.time).format('DD/MM/YYYY')}</b> |
                             <b style={{}}> {el.khachhang}</b>
                           </Brief>
-                          <Brief><b style={{color: '#FE6A14'}}>{el.sodiem} điểm</b> | {el.diemxuatphat} -> {el.diemtrahang}</Brief>
-                          <Brief><b style={{color: 'blue'}}>{el.laixe[0].name}</b></Brief>
-                          {el.tienthu > 0 && <Brief>Thu hộ: <b style={{color: '#FE6A14'}}>{el.tienthu.toLocaleString()} đ</b></Brief>}
-                          {el.tienphatsinh > 0 && <Brief>Phí phát sinh: <b style={{color: '#FE6A14'}}>{el.tienphatsinh.toLocaleString()} đ</b></Brief>}
+                          {/*<Brief><b style={{color: '#FE6A14'}}>{el.sodiem} điểm</b> | {el.diemxuatphat} -> {el.diemtrahang}</Brief>*/}
+                          {/*<Brief><b style={{color: 'blue'}}>{el.laixe[0].name}</b></Brief>*/}
+                          {/*{el.tienthu > 0 && <Brief>Thu hộ: <b style={{color: '#FE6A14'}}>{el.tienthu.toLocaleString()} đ</b></Brief>}*/}
+                          {/*{el.tienphatsinh > 0 && <Brief>Phí phát sinh: <b style={{color: '#FE6A14'}}>{el.tienphatsinh.toLocaleString()} đ</b></Brief>}*/}
                         </Item>
                       )
                     })

@@ -17,6 +17,7 @@ import LaiXeThemDO from './components/laixe/DO';
 import LaiXeListDO from './components/laixe/ListDO';
 import LaiXeEditDO from './components/laixe/EditDO';
 import LaiXePassword from './components/laixe/Password';
+import LaiXeDangDi from './components/laixe/DangDi';
 
 import LaiXeThemPhuPhi from './components/laixe/PhuPhi';
 import LaiXeListPhuPhi from './components/laixe/ListPhuPhi';
@@ -31,10 +32,12 @@ import ThemAutoFill from './components/it/AutoFill';
 
 
 import HomeDieuHanh from './components/dieuhanh/Home';
-import DieuHanhDO from './components/dieuhanh/ListDO';
+import DieuHanhThemDO from './components/dieuhanh/DO';
+import DieuHanhDOMenu from './components/dieuhanh/DoMenu';
 import DieuHanhPhuPhi from './components/dieuhanh/ListPhuPhi';
 import DieuHanhEditDO from './components/dieuhanh/EditDO';
 import DieuHanhEditPhuPhi from './components/dieuhanh/EditPhuPhi';
+import DieuHanhListDO from './components/dieuhanh/ListDO';
 
 import HomeThauPhu from './components/thauphu/Home';
 import ThauPhuDanhSachLaiXe from './components/thauphu/ListLaiXe';
@@ -55,7 +58,8 @@ ReactDOM.render((
           <Route path="laixe/themdo" component={LaiXeThemDO} />
           <Route path="laixe/danhsachdo" component={LaiXeListDO} />
           <Route path="laixe/doimatkhau" component={LaiXePassword} />
-          <Route path="laixe/do/:id" component={LaiXeEditDO} />
+          <Route path="laixe/do/xem" component={LaiXeEditDO} />
+          <Route path="laixe/do/dangdi" component={LaiXeDangDi} />
 
 
           <Route path="laixe/themphuphi" component={LaiXeThemPhuPhi} />
@@ -70,7 +74,9 @@ ReactDOM.render((
           <Route path="it/autofill" component={ThemAutoFill} />
           
           <Route path="dieuhanh" component={HomeDieuHanh} />
-          <Route path="dieuhanh/do" component={DieuHanhDO} />
+          <Route path="dieuhanh/do" component={DieuHanhDOMenu} />
+          <Route path="dieuhanh/danhsachdo" component={DieuHanhListDO} />
+          <Route path="dieuhanh/themdo" component={DieuHanhThemDO} />
           <Route path="dieuhanh/do/:id" component={DieuHanhEditDO} />
           <Route path="dieuhanh/phuphi" component={DieuHanhPhuPhi} />
           <Route path="dieuhanh/phuphi/:id" component={DieuHanhEditPhuPhi} />

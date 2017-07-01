@@ -10,7 +10,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber, Switch} from 'antd'
+import {Row, Col, Input, Button, message, Select, AutoComplete, InputNumber, Switch, Modal} from 'antd'
 import moment from 'moment';
 import { Link } from 'react-router'
 import agent from '../../agent';
@@ -18,7 +18,8 @@ import { connect } from 'react-redux';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
-  APPLY_TAG_FILTER
+  APPLY_TAG_FILTER,
+  APP_LOAD
 } from '../../constants/actionTypes';
 
 import CompleteInput  from '../_components/CompleteInput'
@@ -36,14 +37,17 @@ const mapStateToProps = state => ({
   ...state.home,
   appName: state.common.appName,
   token: state.common.token,
-  xe: state.common.currentUser.xe
+  xe: state.common.currentUser.xe,
+  do: state.common.currentUser.do
 });
 
 const mapDispatchToProps = dispatch => ({
   // onLoad: (tab, pager, payload) =>
   //   dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
   onUnload: () =>
-    dispatch({  type: HOME_PAGE_UNLOADED })
+    dispatch({  type: HOME_PAGE_UNLOADED }),
+  reloadInfo: (payload, token) =>
+    dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
 });
 
 
@@ -52,41 +56,30 @@ class DOPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      edit: true,
       init: false,
       data: {},
       khachhang: [],
       diemxuatphat: [],
       diemtrahang: [],
       nguoiyeucau: [],
+      visible: false,
+      edit: false,
+      bks: this.props.xe.bks,
+      khongnhan: false,
+      lydohuy: ''
     }
   }
 
   componentWillMount() {
     let that = this;
-    agent.LaiXe.DObyId(this.props.params.id)
+    agent.LaiXe.DObyId(this.props.do)
       .then(res => {
         let DO = res[0]
         that.setState(prev => { return {
           ...prev,
-          edit: (moment(DO.time).diff(moment(Date.now() - 2*60*60*1000)) > 0) && !DO.trangthai.daduyet,
+          init: true,
           data: DO
         }})
-  
-        agent.LaiXe.autofill()
-          .then(res => {
-            that.setState(prev => {return {
-              ...prev,
-              init: true,
-              khachhang: valueByField('khachhang', res),
-              diemxuatphat: valueByField('diadiem', res),
-              diemtrahang: valueByField('diadiem', res),
-              nguoiyeucau: valueByField('nguoiyeucau', res),
-              doixe: that.props.xe.bks !== DO.xe.bks,
-              phatsinh: DO.tienphatsinh > 0,
-            }})
-          })
-        
       })
       .catch(err => {
       
@@ -95,6 +88,52 @@ class DOPage extends React.Component {
 
   componentWillUnmount() {
     this.props.onUnload();
+  }
+  
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+  handleOk = (e) => {
+    // console.log(e);
+    // this.setState({
+    //   visible: false,
+    // });
+    let that = this;
+    if(this.state.khongnhan) {
+  
+      agent.LaiXe.huyDO({do: this.props.do, lydohuy: this.state.lydohuy})
+        .then(res => {
+          const token = window.localStorage.getItem('jwt');
+          if (token) {
+            agent.setToken(token);
+          }
+          this.props.reloadInfo(agent.Auth.current());
+          message.success("Hủy thành công")
+          this.context.router.replace('/laixe')
+        })
+        .catch(err => {
+          message.error("Có lỗi")
+        })
+      
+    } else {
+      agent.LaiXe.nhanDO({do: this.props.do, bks: that.state.bks})
+        .then(res => {
+          this.context.router.replace('/laixe/do/dangdi');
+          message.success("Xác nhận thành công")
+        })
+        .catch(err => {
+          message.error("Có lỗi")
+        })
+    }
+    
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
   }
 
   render() {
@@ -106,491 +145,139 @@ class DOPage extends React.Component {
           </div>
         </div>)
     } else {
-      if(!this.state.edit) {
         return (
-          <div className="do-page">
-            <div className="laixe-doWr">
-              <h2 className="mt10 mt20 textCenter">Lệnh điều động xe</h2>
+          <div className="home-page" style={{marginTop: '0.5rem'}}>
+            <div style={{padding: '0.2rem', paddingBottom: '2rem'}}>
+              <h2 className="textCenter" style={{fontSize: '1rem'}}>Lệnh điều xe</h2>
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Mã DO: </span><b style={{color: 'red'}}>{'DO' + (this.state.data._id + 10000)}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Mã lệnh: </span><b style={{fontSize: '0.6rem', color: 'red'}}>{'DO' + (this.state.data._id + 10000)}</b>
               </div>
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Ngày: </span><b>{moment(this.state.data.time).format('DD/MM/YYYY')}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Ngày: </span><b style={{fontSize: '0.6rem'}}>{moment(this.state.data.time).format('DD/MM/YYYY')}</b>
               </div>
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Khách hàng : </span><b>{this.state.data.khachhang}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Khách hàng : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.khachhang}</b>
               </div>
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm xuất phát : </span><b>{this.state.data.diemxuatphat}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người yêu cầu: </span><b style={{fontSize: '0.6rem'}}>{this.state.data.nguoiyeucau}</b>
               </div>
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm trả hàng : </span><b>{this.state.data.diemtrahang}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm xuất phát : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.diemxuatphat}</b>
               </div>
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người yêu cầu : </span><b>{this.state.data.nguoiyeucau}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm trả hàng: </span><b style={{fontSize: '0.6rem'}}>{this.state.data.diemtrahang}</b>
               </div>
+              
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trọng tải : </span><b>{this.state.data.trongtai} tấn</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trọng tải: </span><b style={{fontSize: '0.6rem'}}>{this.state.data.trongtai} tấn</b>
               </div>
+              
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số điểm trả hàng : </span><b>{this.state.data.sodiem}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số điểm </span><b style={{fontSize: '0.6rem'}}>{this.state.data.sodiem}</b>
               </div>
+              
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Quãng đường : </span><b>{this.state.data.sokm} KM</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Quãng đường : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.sokm} KM</b>
               </div>
-              <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền thu : </span><b>{this.state.data.tienthu.toLocaleString() } đ</b>
-              </div>
-              <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trạng thái : </span>
-                <b>
-                  {!this.state.data.trangthai.daduyet ? ("Đang xử lý") : (this.state.data.trangthai.duyet ? ("Đồng ý") : ("Hủy"))}
-                </b>
-              </div>
+              
+              {/*<div>*/}
+                {/*<span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền thu : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.tienthu.toLocaleString() } đ</b>*/}
+              {/*</div>*/}
+              {/*<div>*/}
+                {/*<span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trạng thái : </span>*/}
+                {/*<b>*/}
+                  {/*{!this.state.data.trangthai.daduyet ? ("Đang xử lý") : (this.state.data.trangthai.duyet ? ("Đồng ý") : ("Hủy"))}*/}
+                {/*</b>*/}
+              {/*</div>*/}
             </div>
-            <div className="updateButton">
-              <Link to="/laixe/danhsachdo">
+            {this.state.data.tinhtrang === 0 && <Row style={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
+              <Button type="primary"
+                      style={{width: '50%', height: '1.5rem', fontSize: '0.6rem'}}
+                      // onClick={() => {
+                      //   if(check(gThis.state.data)){
+                      //     agent.LaiXe.capnhapDO(gThis.state.data)
+                      //       .then(res => {
+                      //         message.success("Cập nhập thành công")
+                      //       })
+                      //       .catch(err => {
+                      //         message.error("Cập nhập thất bại")
+                      //       })
+                      //   }
+                      //
+                      // }}
+                      onClick={() => this.setState({visible: true, khongnhan: false})}
+              >Chọn xe</Button>
+              <Button type="danger" ghost={true}
+                      style={{width: '50%', height: '1.5rem', fontSize: '0.6rem'}}
+                      onClick={() => {
+                        this.setState(prev => {return {
+                          ...prev,
+                          visible: true,
+                          khongnhan: true,
+                        }})
+                      }}
+              >Không nhận</Button>
+            </Row>}
+            
+            {this.state.data.tinhtrang > 0 && <Row style={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
+              <Link to="/laixe/do/dangdi">
                 <Button type="primary"
-                        style={{width: 200, height: 60, fontSize: 30}}
-                >Quay lại</Button>
+                        style={{width: '100%', height: '1.5rem', fontSize: '0.6rem'}}
+                >Tiếp tục</Button>
               </Link>
-            </div>
+            </Row>
+            }
+            
+            <Modal
+              visible={this.state.visible}
+              title={!this.state.khongnhan ? "Chọn xe chờ hàng" : "Hủy lệnh điều xe"}
+              maskClosable={true}
+              // onOk={this.handleOk}
+              // onCancel={this.handleCancel}
+              footer={[
+                <Button key="back" size="large" onClick={() => this.handleCancel()}>Quay lại</Button>,
+                <Button key="submit" type="primary" size="large" onClick={this.handleOk}>Xác nhận</Button>,
+              ]}
+              className={!this.state.khongnhan ? "chonxe" : ""}
+            >
+              {this.state.khongnhan ? (<div>
+                <b style={{fontSize: '1.2rem'}}>Lý do</b>
+                <Input type="textarea" rows={4} style={{width: '100% !important', height: '3rem !important', lineHeight: '1rem', fontSize: '0.5rem'}}
+                       onChange={(value) => {
+                         this.setState(prev => {
+                           return {
+                             ...prev,
+                             data: {
+                               ...prev.data,
+                               lydohuy: value
+                             }
+                           }
+                         })
+                       }}
+                />
+              </div>) : (
+                <div>
+                  {!this.state.edit && <div className="bks"
+                                            onClick={() => this.setState({edit: true})}
+                  >{this.props.xe.bks}</div>}
+                  {this.state.edit && <Input
+                    type="text"
+                    defaultValue={this.state.bks}
+                    onChange={(e) => {
+                      let value = e.target.value
+                      this.setState(prev => {return {
+                        ...prev,
+                        bks: value
+                      }})
+                    }}
+                  />}
+                </div>
+              )}
+              
+            </Modal>
+            
           </div>
         )
-      }
-      return (
-        <div className="do-page">
-          <div className="laixe-doWr">
-            <h2 style={{textAlign: 'center'}}>Lệnh điều động xe ô tô</h2>
-            <div>
-              <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Mã DO: </span><b>{'DO' + (this.state.data._id + 10000)}</b>
-            </div>
-            <Row>
-              <Col span={12}>
-                Khách hàng: <br/>
-                <CompleteInput
-                  defaultValue={this.state.data.khachhang}
-                  option={this.state.khachhang}
-                  onChange={(value) => {
-                    this.setState(prev => {
-                      return {
-                        ...prev,
-                        data: {
-                          ...prev.data,
-                          khachhang: value
-                        }
-                      }
-                    })
-                  }}
-                />
-              </Col>
-              <Col span={12}>
-                Người yêu cầu: <br/>
-                <CompleteInput
-                  defaultValue={this.state.data.nguoiyeucau}
-                  option={this.state.nguoiyeucau}
-                  onChange={(value) => {
-                    this.setState(prev => {
-                      return {
-                        ...prev,
-                        data: {
-                          ...prev.data,
-                          nguoiyeucau: value
-                        }
-                      }
-                    })
-                  }}
-                />
-              </Col>
-            </Row>
-            <Row style={{marginTop: 10}}>
-              Điểm xuất phát: <br/>
-              <CompleteInputPlace
-                isSmall={true}
-                value={this.state.data.diemxuatphat}
-                option={this.state.diemxuatphat}
-                onChange={(value) => {
-                  this.setState(prev => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        diemxuatphat: value
-                      }
-                    }
-                  })
-                }}
-                selectOption={(value) => {
-                  this.setState(prev => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        tinhxuatphat: codeByValue(value, this.state.diemxuatphat)
-                      }
-                    }
-                  })
-                }}
-              />
-              <CustomSelect
-                value={this.state.data.tinhxuatphat}
-                handleChange={value => {
-                  this.setState(prev => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        tinhxuatphat: value
-                      }
-                    }
-                  })
-                }}
-                selectOption={(value) => {
-                  let tmp = codeByValue(this.state.data.diemxuatphat, this.state.diemxuatphat)
-                  if(tmp !== undefined && tmp !== value){
-                    this.setState(prev => {
-                      return {
-                        ...prev,
-                        data: {
-                          ...prev.data,
-                          diemxuatphat: ''
-                        }
-                      }
-                    })
-                  }
-                }}
-              />
-            </Row>
-            <Row style={{marginTop: 10}}>
-              Điểm trả hàng: <br/>
-              <CompleteInputPlace
-                isSmall={true}
-                value={this.state.data.diemtrahang}
-                option={this.state.diemtrahang}
-                onChange={(value) => {
-                  this.setState(prev => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        diemtrahang: value
-                      }
-                    }
-                  })
-                }}
-                selectOption={(value) => {
-                  this.setState(prev => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        tinhtrahang: codeByValue(value, this.state.diemtrahang)
-                      }
-                    }
-                  })
-        
-                }
-                }
-              />
-              <CustomSelect
-                value={this.state.data.tinhtrahang}
-                handleChange={value => {
-                  this.setState(prev => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        tinhtrahang: value
-                      }
-                    }
-                  })
-                }}
-                selectOption={(value) => {
-                  let tmp = codeByValue(this.state.data.diemtrahang, this.state.diemtrahang)
-                  if(tmp !== undefined && tmp !== value){
-                    this.setState(prev => {
-                      return {
-                        ...prev,
-                        data: {
-                          ...prev.data,
-                          diemtrahang: ''
-                        }
-                      }
-                    })
-                  }
-                }}
-              />
-            </Row>
-            <Row style={{marginTop: 10}}>
-    
-              <Col span={12}>
-                Trọng tải (tấn): <br/>
-                <InputNumber style={{width: '100%'}} size="large"
-                             value={this.state.data.trongtai}
-                             min={1} max={100}
-                             onChange={(value) => {
-                               if(!isNaN(parseFloat(value)) || value === '') {
-                                 this.setState(prev => {
-                                   return {
-                                     ...prev,
-                                     data: {
-                                       ...prev.data,
-                                       trongtai: value
-                                     }
-                                   }
-                                 })
-                               } else {
-                                 this.setState(prev => {
-                                   return {
-                                     ...prev,
-                                     data: {
-                                       ...prev.data,
-                                       trongtai: 1
-                                     }
-                                   }
-                                 })
-                               }
-                             }}
-                />
-              </Col>
-    
-              <Col span={12}>
-                Số điểm trả hàng:
-                <InputNumber style={{width: '100%'}} size="large"
-                             value={this.state.data.sodiem}
-                             min={1} max={100}
-                             onChange={(value) => {
-                               if(!isNaN(parseInt(value)) || value === '') {
-                                 this.setState(prev => {
-                                   return {
-                                     ...prev,
-                                     data: {
-                                       ...prev.data,
-                                       sodiem: value
-                                     }
-                                   }
-                                 })
-                               } else {
-                                 this.setState(prev => {
-                                   return {
-                                     ...prev,
-                                     data: {
-                                       ...prev.data,
-                                       sodiem: 1
-                                     }
-                                   }
-                                 })
-                               }
-                             }}
-                />
-              </Col>
-            </Row>
-            <Row style={{marginTop: 10}}>
-              <Col span={12}>
-                Quãng đường(km)
-                <InputNumber style={{width: '100%'}} size="large" min={1} max={1000}
-                             value={this.state.data.sokm}
-                             onChange={(value) => {
-                               if(!isNaN(parseFloat(value))) {
-                                 this.setState(prev => {
-                                   return {
-                                     ...prev,
-                                     data: {
-                                       ...prev.data,
-                                       sokm: value
-                                     }
-                                   }
-                                 })
-                               } else {
-                                 this.setState(prev => {
-                                   return {
-                                     ...prev,
-                                     data: {
-                                       ...prev.data,
-                                       sokm: 1
-                                     }
-                                   }
-                                 })
-                               }
-                             }}
-                />
-              </Col>
-              <Col span={12}>
-                Tiền thu hộ:
-                <InputNumber
-                  defaultValue={this.state.data.tienthu}
-                  min={0}
-                  formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-                  parser={value => value.replace(/(,*)/g, '')}
-                  style={{width: '100%'}}
-                  onChange={(value) => {
-                    if(parseInt(value).isNaN){
-                      value = 0;
-                    }
-                    this.setState(prev => {
-                      return {
-                        ...prev,
-                        data: {
-                          ...prev.data,
-                          tienthu: value
-                        }
-                      }
-                    })
-                  }}
-                />
-              </Col>
-            </Row>
-  
-            <Row style={{marginTop: 10}}>
-              .{this.props.xe.bks && !this.state.doixe && (<span>Xe chở hàng: <b style={{color: 'red', fontWeight: 'bold'}}>{this.props.xe.bks}</b> - <i>{this.props.xe.trongtai} tấn</i></span>) }
-    
-              <span  style={{float: 'right'}}> Đi xe khác: <Switch defaultChecked={this.state.doixe} onChange={(value) => {
-                this.setState(prev => { return {
-                  ...prev,
-                  doixe: value
-                }})}
-              } />
-              </span>
-              <div style={{display: this.state.doixe ? 'block': 'none'}}>
-                <Row>
-                  <Col span={12}>
-                    Biển kiếm soát:
-                    <Input
-                      defaultValue={this.state.data.xe.bks}
-                      onChange={(e) => {
-                        let value = e.target.value
-                        this.setState(prev => {
-                          return {
-                            ...prev,
-                            data: {
-                              ...prev.data,
-                              xe: {
-                                ...prev.data.xe,
-                                bks: value
-                              }
-                            }
-                          }
-                        })
-                      }}
-                    />
-                  </Col>
-        
-                  <Col span={12}>
-                    Trọng tải:
-                    <InputNumber style={{width: '100%'}} size="large"
-                                 defaultValue={this.state.data.xe.trongtai}
-                                 min={1} max={100}
-                                 onChange={(value) => {
-                                   if(!isNaN(parseFloat(value)) || value === '') {
-                                     this.setState(prev => {
-                                       return {
-                                         ...prev,
-                                         data: {
-                                           ...prev.data,
-                                           xe: {
-                                             ...prev.data.xe,
-                                             trongtai: value
-                                           }
-                                         }
-                                       }
-                                     })
-                                   } else {
-                                     this.setState(prev => {
-                                       return {
-                                         ...prev,
-                                         data: {
-                                           ...prev.data,
-                                           xe: {
-                                             ...prev.data.xe,
-                                             trongtai: 1
-                                           }
-                                         }
-                                       }
-                                     })
-                                   }
-                                 }}
-                    />
-                  </Col>
-                </Row>
-              </div>
-            </Row>
-  
-            <Row style={{marginTop: 10}}>
-              Tiền phát sinh: <Switch  defaultChecked={this.state.phatsinh} onChange={(value) => {
-              this.setState(prev => { return {
-                ...prev,
-                phatsinh: value
-              }})}
-            } />
-              <div style={{display: this.state.phatsinh ? 'block': 'none'}}>
-                <InputNumber
-                  defaultValue={this.state.data.tienphatsinh}
-                  min={0}
-                  formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-                  parser={value => value.replace(/(,*)/g, '')}
-                  style={{width: '100%'}}
-                  onChange={(value) => {
-                    if(parseInt(value).isNaN){
-                      value = 0;
-                    }
-                    this.setState(prev => {
-                      return {
-                        ...prev,
-                        data: {
-                          ...prev.data,
-                          tienphatsinh: value
-                        }
-                      }
-                    })
-                  }}
-                />
-                <Col style={{marginTop: 10}}>
-                  Lý do:
-                  <Input type="textarea" rows={2}
-                         defaultValue={this.state.data.lydo}
-                         style={{width: '100%', minHeight: 120}}
-                         onChange={(e) => {
-                           let value = e.target.value
-                           this.setState(prev => {
-                             return {
-                               ...prev,
-                               data: {
-                                 ...prev.data,
-                                 lydo: value
-                               }
-                             }
-                           })
-                         }}
-                  />
-                </Col>
-              </div>
-            </Row>
-            
-            <Row style={{marginTop: 10, marginBottom: 40}}>
-              <Button type="primary"
-                      style={{width: 250, height: 60, fontSize: 40}}
-                      onClick={() => {
-                        if(check(gThis.state.data)){
-                          agent.LaiXe.capnhapDO(gThis.state.data)
-                            .then(res => {
-                              message.success("Cập nhập thành công")
-                            })
-                            .catch(err => {
-                              message.error("Cập nhập thất bại")
-                            })
-                        }
-                       
-                      }}
-              >Cập nhập</Button>
-              <Link to="/laixe/danhsachdo">
-                <Button type="primary"
-                        style={{width: 200, height: 60, fontSize: 30}}
-                >Quay lại</Button>
-              </Link>
-            </Row>
-          </div>
-        </div>
-      )
     }
   }
 

@@ -21,8 +21,14 @@ import {
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
 // import CompleteInput  from './component/Complete'
-
 import {slugify} from '../_function'
+
+
+message.config({
+  // top: 100,
+  duration: 3,
+});
+
 const Option = Select.Option;
 const Promise = global.Promise;
 
@@ -72,92 +78,90 @@ class DOPage extends React.Component {
     let gThis = this
     return (
       <div className="do-page">
-        <div className="laixe-doWr">
-          <h2 style={{textAlign: 'center'}}>Đổi mật khẩu</h2>
-  
-          <Row>
-            Mật khẩu cũ:
-            <Input
-              type="password"
-              onChange={(e) => {
-                let value = e.target.value
-                this.setState(prev => {
-                  return {
-                    ...prev,
-                    data: {
-                      ...prev.data,
-                      oldPassword: value
-                    }
-                  }
-                })
-              }}
-            />
-          </Row>
-
-          <Row>
-            Mật khẩu mới:
-            <Input
-              type="password"
-              onChange={(e) => {
-                let value = e.target.value
-                this.setState(prev => {
-                  return {
-                    ...prev,
-                    data: {
-                      ...prev.data,
-                      password: value
-                    }
-                  }
-                })
-              }}
-            />
-          </Row>
-  
-          <Row>
-            Nhập lại mật khẩu:
-            <Input
-              type="password"
-              onChange={(e) => {
-                let value = e.target.value
-                this.setState(prev => {
-                  return {
-                    ...prev,
-                    data: {
-                      ...prev.data,
-                      rePassword: value
-                    }
-                  }
-                })
-              }}
-            />
-          </Row>
-          
-          <Row style={{marginTop: 10}}>
-            <Button type="primary" style={{width: 200, height: 60, fontSize: 30}}
-                    onClick={() => {
-                      if(this.state.data.password !== this.state.data.rePassword){
-                        message.error("Mật khẩu không trùng khớp")
-                      } else {
-                        agent.LaiXe.changePass({old: this.state.data.oldPassword, new: this.state.data.password})
-                          .then(res => {
-                            message.success("Đổi mật khẩu thành công")
-                          })
-                          .catch(err => {
-                            message.error("Mật khẩu cũ không đúng")
-                          })
+        <div className="laixe-doWr" style={{marginTop: '0.5rem'}}>
+          <h2 style={{textAlign: 'center', fontSize: '1rem'}}>Đổi mật khẩu</h2>
+          <div style={{padding: '0.2rem'}}>
+            <Row>
+              <b style={{fontSize: '0.5rem'}}>Mật khẩu cũ:</b>
+              <Input
+                type="password"
+                placeholder="Mật khẩu cũ"
+                onChange={(e) => {
+                  let value = e.target.value
+                  this.setState(prev => {
+                    return {
+                      ...prev,
+                      data: {
+                        ...prev.data,
+                        oldPassword: value
                       }
-                    }}
-            >
-              Đổi mật khẩu
-            </Button>
-            <div className="updateButton">
-              <Link to="/laixe">
-                <Button type="primary"
-                        style={{width: 200, height: 60, fontSize: 30}}
-                >Quay lại</Button>
-              </Link>
-            </div>
-          </Row>
+                    }
+                  })
+                }}
+              />
+            </Row>
+
+            <Row>
+              <b style={{fontSize: '0.5rem'}}>Mật khẩu mới:</b>
+              <Input
+                type="password"
+                placeholder="Mật khẩu mới"
+                
+                onChange={(e) => {
+                  let value = e.target.value
+                  this.setState(prev => {
+                    return {
+                      ...prev,
+                      data: {
+                        ...prev.data,
+                        password: value
+                      }
+                    }
+                  })
+                }}
+              />
+              <Input
+                type="password"
+                placeholder="Nhập lại mật khẩu mới"
+                onChange={(e) => {
+                  let value = e.target.value
+                  this.setState(prev => {
+                    return {
+                      ...prev,
+                      data: {
+                        ...prev.data,
+                        rePassword: value
+                      }
+                    }
+                  })
+                }}
+              />
+            </Row>
+          
+            <Row style={{marginTop: 10}}>
+              <Button type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}
+                      onClick={() => {
+                        if(this.state.data.password !== this.state.data.rePassword){
+                          message.error("Mật khẩu không trùng khớp")
+                        } else {
+                          agent.LaiXe.changePass({old: this.state.data.oldPassword, new: this.state.data.password})
+                            .then(res => {
+                              message.success("Đổi mật khẩu thành công")
+                              this.context.router.replace('/')
+                            })
+                            .catch(err => {
+                              message.error("Mật khẩu cũ không đúng")
+                            })
+                        }
+                      }}
+              >
+                Đổi mật khẩu
+              </Button>
+              
+            </Row>
+            
+          </div>
+          
         </div>
       </div>
     )

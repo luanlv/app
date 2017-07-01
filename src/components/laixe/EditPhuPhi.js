@@ -118,25 +118,25 @@ class DOPage extends React.Component {
     } else {
       if(!this.state.edit) {
         return (
-          <div className="do-page">
-            <div className="laixe-doWr">
-              <h2 className="mt10 mt20 textCenter">Phụ phí</h2>
+          <div className="home-page" style={{marginTop: '0.5rem'}}>
+            <div style={{padding: '0.2rem', paddingBottom: '2rem'}}>
+              <h2 className="textCenter" style={{fontSize: '1.2rem'}}>Phụ phí</h2>
   
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Ngày: </span><b>{moment(this.state.data.time).format('DD/MM/YYYY')}</b>
+                <span style={{width: '3rem', fontSize: '0.3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Ngày: </span><b style={{fontSize: '0.4rem'}}>{moment(this.state.data.time).format('DD/MM/YYYY')}</b>
               </div>
               
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Khoản chi: </span><b>{this.state.data.khoanchi}</b>
+                <span style={{width: '3rem', fontSize: '0.3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}>Khoản chi: </span><b style={{fontSize: '0.4rem'}}>{this.state.data.khoanchi}</b>
               </div>
 
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền: </span><b>{this.state.data.sotien.toLocaleString() } đ</b>
+                <span style={{width: '3rem', fontSize: '0.3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền: </span><b style={{fontSize: '0.4rem'}}>{this.state.data.sotien.toLocaleString() } đ</b>
               </div>
   
               <div>
-                <span style={{width: 280, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trạng thái: </span>
-                <b>
+                <span style={{width: '3rem', fontSize: '0.3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trạng thái: </span>
+                <b style={{fontSize: '0.4rem'}}>
                   {!this.state.data.trangthai.daduyet ? ("Đang xử lý") : (this.state.data.trangthai.duyet ? ("Đồng ý") : ("Hủy"))}
                 </b>
               </div>
@@ -153,12 +153,13 @@ class DOPage extends React.Component {
         )
       }
       return (
-        <div className="do-page">
-          {this.state.init && (<div className="laixe-doWr">
-            <h2 style={{textAlign: 'center'}}>Thêm các loại phụ phí</h2>
+        <div className="home-page" style={{marginTop: '0.5rem'}}>
+          {this.state.init && (<div style={{padding: '0.2rem', paddingBottom: '2rem'}}>
+            <h2 style={{textAlign: 'center', fontSize: '1.2rem'}}>Phụ phí</h2>
       
             <Row>
-              Lý do:<CompleteInput
+              <b style={{fontSize: '0.4rem'}}>Lý do:</b>
+              <CompleteInput
                 defaultValue={this.state.data.khoanchi}
                 option={[
                   "Tiền dầu",
@@ -181,7 +182,7 @@ class DOPage extends React.Component {
             </Row>
       
             <Row style={{marginTop: 10}}>
-              Số Tiền:
+              <b style={{fontSize: '0.4rem'}}>Số Tiền:</b>
               <InputNumber
                 disabled={!this.state.edit}
                 defaultValue={this.state.data.sotien}
@@ -205,9 +206,9 @@ class DOPage extends React.Component {
                 }}
               />
             </Row>
-            <Row style={{marginTop: 10}}>
+            <Row style={{marginTop: '1rem'}}>
               <Button
-                style={{width: 200, height: 60, fontSize: 40}}
+                style={{width: '100%', height: '1.5rem', fontSize: '0.4rem'}}
                 type="primary"
                 onClick={() => {
                   agent.LaiXe.capnhapPhuPhi(gThis.state.data)
@@ -222,13 +223,6 @@ class DOPage extends React.Component {
               >
                 Cập nhập
               </Button>
-              <div className="updateButton">
-                <Link to="/laixe/danhsachphuphi">
-                  <Button type="primary"
-                          style={{width: 200, height: 60, fontSize: 30}}
-                  >Quay lại</Button>
-                </Link>
-              </div>
             </Row>
           </div>)}
   

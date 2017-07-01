@@ -39,20 +39,17 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home-page">
-        <Row className="homeWr">
-          <WingBlank>
-            <div className="btn-container">
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.3em'}}>
+          
               <Link to="/dieuhanh/do">
-                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Lệnh điều động xe</Button>
+                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>
               </Link>
               
               <Link to="/dieuhanh/phuphi">
-                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Phụ phí</Button>
+                <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Phụ phí</Button>
               </Link>
-            </div>
-          </WingBlank>
-        </Row>
+        </div>
       </div>
     );
   }

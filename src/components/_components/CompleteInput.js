@@ -31,7 +31,7 @@ class CompleteInput extends React.Component {
       <AutoComplete
         dataSource={dataSource}
         defaultValue={this.props.defaultValue}
-        style={{ width: this.props.isSmall ? "65%" : "100%" }}
+        style={{ width: "100%" }}
         onChange={(value) => {this.props.onChange(value)}}
         onSelect={(value) => {if(this.props.selectOption) this.props.selectOption(value)}}
         onSearch={this.handleSearch}

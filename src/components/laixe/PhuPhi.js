@@ -101,12 +101,12 @@ class DOPage extends React.Component {
   render() {
     let gThis = this
     return (
-      <div className="do-page">
-        <div className="laixe-doWr">
-          <h2 style={{textAlign: 'center'}}>Thêm các loại phụ phí</h2>
+      <div className="home-page phuphi" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.2em'}}>
+          <h2 style={{textAlign: 'center', fontSize: '1.2rem'}}>Thêm phụ phí</h2>
 
           <Row>
-            Lý do:
+            <b style={{fontSize: '0.4rem'}}>Lý do:</b>
             <CompleteInput
               option={[
                 "Tiền dầu",
@@ -129,7 +129,7 @@ class DOPage extends React.Component {
           </Row>
 
           <Row style={{marginTop: 10}}>
-            Số Tiền:
+            <b style={{fontSize: '0.4rem'}}>Số Tiền:</b>
             <InputNumber
               defaultValue={0}
               min={0}
@@ -152,9 +152,9 @@ class DOPage extends React.Component {
               }}
             />
           </Row>
-          <Row style={{marginTop: 10}}>
+          <Row style={{marginTop: '0.5rem'}}>
             <Button
-              style={{width: 200, height: 60, fontSize: 40}}
+              style={{width: '100%', height: '1.5rem', fontSize: '0.4rem'}}
               type="primary"
                     onClick={() => {
                       console.log(gThis.state.data)
@@ -168,7 +168,7 @@ class DOPage extends React.Component {
                         })
                     }}
             >
-              Tạo mới
+              Thêm mới
             </Button>
           </Row>
         </div>

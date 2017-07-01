@@ -45,24 +45,20 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home-page">
-        <WingBlank>
-          <div className="btn-container">
-            <Link to="/laixe/themdo">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Thêm mới</Button>
-            </Link>
-            <Link to="/laixe/danhsachdo">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Danh sách</Button>
-            </Link>
-          </div>
-        </WingBlank>
-        <div className="updateButton">
-          <Link to="/laixe">
-            <Button type="primary"
-                    style={{width: 200, height: 60, fontSize: 30}}
-            >Quay lại</Button>
+      <div className="home-page" style={{marginTop: '0.5rem'}}>
+        <div style={{padding: '0.2em'}}>
+          
+          <Link to="/laixe/themdo">
+            <Button size={"large"} className="btn" style={{backgroundColor: 'grey !important' ,width: '100%', height: '2rem', fontSize: '1rem'}}>Chưa có</Button>
           </Link>
+        
+          <Link to="/laixe/danhsachdo">
+            <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Lịch sử</Button>
+          </Link>
+          
         </div>
+      
+        
       </div>
     );
   }

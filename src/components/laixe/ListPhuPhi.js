@@ -53,16 +53,9 @@ class ListDO extends React.Component {
   render() {
     
     return (
-      <div className="listDO-page">
+      <div className="home-page" style={{marginTop: '1rem'}}>
         <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Lệnh điều động xe</h2>
-          <div className="updateButton">
-            <Link to="/laixe/phuphi">
-              <Button type="primary"
-                      style={{width: 200, height: 60, fontSize: 30}}
-              >Quay lại</Button>
-            </Link>
-          </div>
+          <h2 className="textCenter" style={{marginTop: '0.4rem', marginBottom: '0.4rem', fontSize: '1.2rem'}}>Lịch sử phụ phí</h2>
           {this.props.status.listPhuPhi && (<div>
             {this.props.listPhuPhi.map((el, index) => {
               return (

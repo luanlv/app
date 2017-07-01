@@ -53,13 +53,13 @@ class ListDO extends React.Component {
   render() {
 
     return (
-      <div className="listDO-page">
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <h2 className="textCenter" style={{fontSize: '0.8rem'}}>Lịch sử chạy xe</h2>
         <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Lệnh điều động xe</h2>
           {this.props.status.listDO && (<div>
             {this.props.listDO.map((el, index) => {
               return (
-                <Link to={"/laixe/do/" + el._id}
+                <Link to={""}
                       key={index}
                 >
                   <Item

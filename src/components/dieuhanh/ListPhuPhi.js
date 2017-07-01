@@ -77,16 +77,10 @@ class ListDO extends React.Component {
   render() {
 
     return (
-      <div className="listDO-page">
-        <Row className="laixe-listDO-Wr">
-          <h2 className="mb20 mt10 textCenter">Phụ phí chưa duyệt</h2>
-          <div
-            className="updateButton"
-          >
-            <Button type="primary"
-                    onClick={() => {this.init()}}
-            >Cập nhập</Button>
-          </div>
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <Row className="laixe-listDO-Wr" style={{paddingTop: '0.3rem'}}>
+          <h2 className=" textCenter" style={{fontSize: '0.8rem', paddingBottom: '0.3rem'}}>Phụ phí chưa duyệt</h2>
+        
           {this.state.init && (
               <div>
                   {this.state.listPhuPhi.map((el, index) => {
@@ -118,16 +112,16 @@ class ListDO extends React.Component {
                               ])}
                             >Hủy</Button>
                           </Row>
-                          <Row style={{marginTop: 10}}>
-                            <Link  to={'/dieuhanh/phuphi/' + el._id}><Button type="ghost">Xem</Button></Link>
-                          </Row>
+                          {/*<Row style={{marginTop: 10}}>*/}
+                            {/*<Link  to={'/dieuhanh/phuphi/' + el._id}><Button type="ghost">Xem</Button></Link>*/}
+                          {/*</Row>*/}
                         </div>}
                         className="list-do"
                         multipleLine
                         platform="android"
                         key={index}
                       >
-                        <b style={{color: 'red', fontWeight: 'bold'}}>{el.sotien.toLocaleString()} đ</b>
+                        <b style={{color: 'red', fontWeight: 'bold'}}>{el.sotien.toLocaleString()} đ</b> | {el.khoanchi}
     
                         <Brief>
                           <b style={{color: '#FEC713'}}>{moment(el.time).format('DD/MM/YYYY')}</b>

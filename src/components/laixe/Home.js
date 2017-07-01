@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
-  APPLY_TAG_FILTER
+  APPLY_TAG_FILTER,
+  APP_LOAD
 } from '../../constants/actionTypes';
 
 import {Button, Row} from 'antd'
@@ -17,7 +18,8 @@ const Promise = global.Promise;
 const mapStateToProps = state => ({
   ...state.home,
   appName: state.common.appName,
-  token: state.common.token
+  token: state.common.token,
+  user: state.common.currentUser,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -26,10 +28,21 @@ const mapDispatchToProps = dispatch => ({
   // onLoad: (tab, pager, payload) =>
   //   dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
   onUnload: () =>
-    dispatch({  type: HOME_PAGE_UNLOADED })
+    dispatch({  type: HOME_PAGE_UNLOADED }),
+  reloadInfo: (payload, token) =>
+    dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
 });
 
 class Home extends React.Component {
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      ghost: true
+    }
+    
+  }
+  
   componentWillMount() {
     const tab = this.props.token ? 'feed' : 'all';
     const articlesPromise = this.props.token ?
@@ -45,14 +58,30 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home-page">
-        <WingBlank>
-          <div className="btn-container">
-            <Link to="/laixe/do">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Lệnh điều động xe</Button>
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.2em'}}>
+            {this.props.user.do === null && <Button size={"large"} className="btn" type="" loading={false} style={{width: '100%', height: '2rem', fontSize: '1rem'}}
+              onClick={() => {
+                const token = window.localStorage.getItem('jwt');
+                if (token) {
+                  agent.setToken(token);
+                }
+                this.props.reloadInfo(agent.Auth.current());
+              }}
+            >Lệnh điều xe</Button>}
+            {this.props.user.do !== null &&
+              <Link to="/laixe/do/xem">
+                <Button size={"large"} className="btn" type="primary" loading={true} style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>
+              </Link>
+            }
+          
+  
+            <Link to="/laixe/danhsachdo">
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Lịch sử</Button>
             </Link>
+          
             <Link to="/laixe/phuphi">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Phụ phí</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Phụ phí</Button>
             </Link>
             
             {/*<Link to="/laixe/phucap">*/}
@@ -60,12 +89,9 @@ class Home extends React.Component {
             {/*</Link>*/}
 
             <Link to="/laixe/doimatkhau">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Đổi mật khẩu</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Đổi mật khẩu</Button>
             </Link>
-
-
-          </div>
-        </WingBlank>
+        </div>
       </div>
     );
   }
