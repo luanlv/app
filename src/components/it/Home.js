@@ -44,26 +44,24 @@ class Home extends React.Component {
   
   render() {
     return (
-      <div className="home-page">
-        <WingBlank>
-          <div className="btn-container">
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.3em'}}>
             <Link to="/it/laixe">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm lái xe</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Thêm lái xe</Button>
             </Link>
             <Link to="/it/xe">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm xe</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Thêm xe</Button>
             </Link>
             <Link to="/it/thauphu">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm thầu phụ</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Thêm thầu phụ</Button>
             </Link>
             <Link to="/it/dieuhanh">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thêm điều hành</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Thêm điều hành</Button>
             </Link>
             <Link to="/it/autofill">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '24'}}>Thông tin</Button>
+              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Thông tin</Button>
             </Link>
           </div>
-        </WingBlank>
       </div>
     );
   }

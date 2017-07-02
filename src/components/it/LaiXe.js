@@ -73,17 +73,16 @@ class DOPage extends React.Component {
   render() {
     let gThis = this
     return (
-      <div className="do-page">
-        <div className="laixe-doWr">
-          
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.3em'}}>
           {!this.state.init && (
-            <div style={{textAlign: 'center', paddingTop: 50}}>
+            <div style={{textAlign: 'center', paddingTop: '0.5rem'}}>
               <Spin tip="Loading..." />
             </div>
           )}
           {this.state.init && (
             <div>
-              <h2 style={{textAlign: 'center'}}>Thêm lái xe</h2>
+              <h2 style={{textAlign: 'center', fontSize: '1.2rem'}}>Thêm lái xe</h2>
               <ThemLaiXeForm
                 thauphu={this.state.thauphu}
                 xe={this.state.xe}

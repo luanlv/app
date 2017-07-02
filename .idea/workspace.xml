@@ -2,31 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf9a0dd3-c738-4a2d-ab27-4b6c55b50c92" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_components/SelectLaiXe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/dieuhanh/DoMenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/laixe/DangDi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.css" afterPath="$PROJECT_DIR$/public/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/agent.js" afterPath="$PROJECT_DIR$/src/agent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/App.js" afterPath="$PROJECT_DIR$/src/components/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ListErrors.js" afterPath="$PROJECT_DIR$/src/components/ListErrors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_components/CompleteInput.js" afterPath="$PROJECT_DIR$/src/components/_components/CompleteInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_components/Login.js" afterPath="$PROJECT_DIR$/src/components/_components/Login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/dieuhanh/DO.js" afterPath="$PROJECT_DIR$/src/components/dieuhanh/DO.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/dieuhanh/Home.js" afterPath="$PROJECT_DIR$/src/components/dieuhanh/Home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/dieuhanh/ListDO.js" afterPath="$PROJECT_DIR$/src/components/dieuhanh/ListDO.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/dieuhanh/ListPhuPhi.js" afterPath="$PROJECT_DIR$/src/components/dieuhanh/ListPhuPhi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/DoMenu.js" afterPath="$PROJECT_DIR$/src/components/laixe/DoMenu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/EditDO.js" afterPath="$PROJECT_DIR$/src/components/laixe/EditDO.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/EditPhuPhi.js" afterPath="$PROJECT_DIR$/src/components/laixe/EditPhuPhi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/Home.js" afterPath="$PROJECT_DIR$/src/components/laixe/Home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/ListDO.js" afterPath="$PROJECT_DIR$/src/components/laixe/ListDO.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/ListPhuPhi.js" afterPath="$PROJECT_DIR$/src/components/laixe/ListPhuPhi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/Password.js" afterPath="$PROJECT_DIR$/src/components/laixe/Password.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/PhuPhi.js" afterPath="$PROJECT_DIR$/src/components/laixe/PhuPhi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/PhuPhiMenu.js" afterPath="$PROJECT_DIR$/src/components/laixe/PhuPhiMenu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/it/AutoFill.js" afterPath="$PROJECT_DIR$/src/components/it/AutoFill.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/it/Home.js" afterPath="$PROJECT_DIR$/src/components/it/Home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/it/LaiXe.js" afterPath="$PROJECT_DIR$/src/components/it/LaiXe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/it/ThauPhu.js" afterPath="$PROJECT_DIR$/src/components/it/ThauPhu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/it/Xe.js" afterPath="$PROJECT_DIR$/src/components/it/Xe.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,53 +23,63 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PhuPhi.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/laixe/PhuPhi.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="156" column="14" lean-forward="false" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="75" />
-              <folding>
-                <element signature="e#293#319#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhuPhiMenu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/laixe/PhuPhiMenu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="48" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="agent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditPhuPhi.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/laixe/EditPhuPhi.js">
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/it/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="752">
-              <caret line="138" column="47" lean-forward="false" selection-start-line="138" selection-start-column="47" selection-end-line="138" selection-end-column="47" />
+            <state relative-caret-position="560">
+              <caret line="46" column="6" lean-forward="true" selection-start-line="46" selection-start-column="6" selection-end-line="47" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DO.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/DO.js">
+      <file leaf-file-name="LaiXe.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/it/LaiXe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2215">
-              <caret line="455" column="18" lean-forward="true" selection-start-line="455" selection-start-column="18" selection-end-line="455" selection-end-column="18" />
+            <state relative-caret-position="511">
+              <caret line="84" column="64" lean-forward="false" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThauPhu.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/it/ThauPhu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Xe.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/it/Xe.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="72" column="64" lean-forward="false" selection-start-line="72" selection-start-column="64" selection-end-line="72" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoFill.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/it/AutoFill.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
               <folding>
                 <element signature="e#293#319#0" expanded="true" />
               </folding>
@@ -95,23 +87,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="72" column="63" lean-forward="true" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
+            <state relative-caret-position="192">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="446">
+              <caret line="232" column="21" lean-forward="false" selection-start-line="232" selection-start-column="21" selection-end-line="232" selection-end-column="21" />
               <folding>
-                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#4570#5797#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListDO.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/ListDO.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="121" column="94" lean-forward="false" selection-start-line="121" selection-start-column="91" selection-end-line="121" selection-end-column="94" />
+            <state relative-caret-position="304">
+              <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -120,28 +122,8 @@
       <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="41" column="6" lean-forward="false" selection-start-line="41" selection-start-column="6" selection-end-line="42" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DoMenu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/DoMenu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="47" column="6" lean-forward="false" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListPhuPhi.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/ListPhuPhi.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="91" />
+            <state relative-caret-position="608">
+              <caret line="49" column="73" lean-forward="true" selection-start-line="49" selection-start-column="70" selection-end-line="49" selection-end-column="148" />
               <folding />
             </state>
           </provider>
@@ -158,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ant-input-number-input-wrap</find>
       <find>tienthuho</find>
       <find>danhsachlaixe</find>
       <find>Custom</find>
@@ -188,6 +169,7 @@
       <find>ant-input-number</find>
       <find>listDO</find>
       <find>xem</find>
+      <find>groupWr</find>
     </findStrings>
     <replaceStrings>
       <replace>#108ee9 !important;</replace>
@@ -205,7 +187,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/components/it/ThauPhu.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemThauPhuForm.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemDieuHanhForm.js" />
         <option value="$PROJECT_DIR$/src/components/truck.svg" />
@@ -214,23 +195,18 @@
         <option value="$PROJECT_DIR$/config/webpack.config.prod.js" />
         <option value="$PROJECT_DIR$/config/webpack.config.dev.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemAutoFill.js" />
-        <option value="$PROJECT_DIR$/src/components/it/AutoFill.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemAutoFillPeople.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemAutoFillPlace.js" />
         <option value="$PROJECT_DIR$/src/components/_components/CustomSelect.js" />
         <option value="$PROJECT_DIR$/src/components/_components/CompleteInputPlace.js" />
         <option value="$PROJECT_DIR$/src/components/_components/CompleteInputValue.js" />
         <option value="$PROJECT_DIR$/public/manifest.json" />
-        <option value="$PROJECT_DIR$/src/components/it/Home.js" />
-        <option value="$PROJECT_DIR$/src/components/it/Xe.js" />
-        <option value="$PROJECT_DIR$/src/components/it/LaiXe.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemXeForm.js" />
         <option value="$PROJECT_DIR$/src/components/it/component/ThemLaiXeForm.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/DO.js" />
         <option value="$PROJECT_DIR$/src/components/dieuhanh/EditDO.js" />
         <option value="$PROJECT_DIR$/src/components/dieuhanh/EditPhuPhi.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/PhuCapMenu.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/App.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/Password.js" />
         <option value="$PROJECT_DIR$/src/components/_components/Login.js" />
@@ -245,7 +221,6 @@
         <option value="$PROJECT_DIR$/src/components/laixe/Home.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/ListDO.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/PhuPhiMenu.js" />
-        <option value="$PROJECT_DIR$/public/app.css" />
         <option value="$PROJECT_DIR$/src/components/laixe/PhuPhi.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/ListPhuPhi.js" />
         <option value="$PROJECT_DIR$/src/components/dieuhanh/Home.js" />
@@ -255,6 +230,13 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/dieuhanh/ListDO.js" />
         <option value="$PROJECT_DIR$/src/agent.js" />
+        <option value="$PROJECT_DIR$/src/components/it/Home.js" />
+        <option value="$PROJECT_DIR$/src/components/it/LaiXe.js" />
+        <option value="$PROJECT_DIR$/src/components/it/ThauPhu.js" />
+        <option value="$PROJECT_DIR$/src/components/it/Xe.js" />
+        <option value="$PROJECT_DIR$/src/components/it/AutoFill.js" />
+        <option value="$PROJECT_DIR$/public/app.css" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -350,6 +332,64 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="it" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dieuhanh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -486,12 +526,12 @@
       <workItem from="1498728427708" duration="8141000" />
       <workItem from="1498748975029" duration="20868000" />
       <workItem from="1498782255603" duration="9876000" />
-      <workItem from="1498919191628" duration="32113000" />
+      <workItem from="1498919191628" duration="33078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103797000" />
+    <option name="totallyTimeSpent" value="104762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1736" height="1051" extended-state="0" />
@@ -530,14 +570,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/it/component/ThemDieuHanhForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/it/component/ThemAutoFillPeople.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -554,14 +586,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_components/CustomSelect2.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/it/AutoFill.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/it/component/ThemAutoFillPlace.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
@@ -598,26 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/it/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="53" column="128" lean-forward="false" selection-start-line="53" selection-start-column="128" selection-end-line="53" selection-end-column="128" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/it/Xe.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="74" column="25" lean-forward="false" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-          <folding>
-            <element signature="e#293#319#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/it/component/ThemXeForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
@@ -633,14 +637,6 @@
           <folding>
             <element signature="e#0#25#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/it/LaiXe.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="57" column="23" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -677,14 +673,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,14 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -822,7 +802,7 @@
         <state relative-caret-position="599">
           <caret line="86" column="8" lean-forward="false" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="45" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -845,16 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="51" column="28" lean-forward="true" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-          <folding>
-            <element signature="e#4551#5778#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/laixe/ListPhuPhi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -868,16 +838,8 @@
         <state relative-caret-position="656">
           <caret line="148" column="10" lean-forward="true" selection-start-line="148" selection-start-column="10" selection-end-line="149" selection-end-column="68" />
           <folding>
-            <element signature="e#293#319#0" expanded="true" />
+            <element signature="e#293#319#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="41" column="6" lean-forward="false" selection-start-line="41" selection-start-column="6" selection-end-line="42" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,7 +880,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/DO.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2215">
-          <caret line="455" column="18" lean-forward="true" selection-start-line="455" selection-start-column="18" selection-end-line="455" selection-end-column="18" />
+          <caret line="455" column="18" lean-forward="false" selection-start-line="455" selection-start-column="18" selection-end-line="455" selection-end-column="18" />
           <folding>
             <element signature="e#293#319#0" expanded="true" />
           </folding>
@@ -928,7 +890,7 @@
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
-          <caret line="72" column="63" lean-forward="true" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
+          <caret line="72" column="63" lean-forward="false" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -938,7 +900,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/ListPhuPhi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
-          <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="91" />
+          <caret line="81" column="38" lean-forward="false" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="91" />
           <folding />
         </state>
       </provider>
@@ -954,7 +916,85 @@
     <entry file="file://$PROJECT_DIR$/src/agent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dieuhanh/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="49" column="73" lean-forward="true" selection-start-line="49" selection-start-column="70" selection-end-line="49" selection-end-column="148" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/it/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="46" column="6" lean-forward="true" selection-start-line="46" selection-start-column="6" selection-end-line="47" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/it/LaiXe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="84" column="64" lean-forward="false" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/it/ThauPhu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/it/Xe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="72" column="64" lean-forward="false" selection-start-line="72" selection-start-column="64" selection-end-line="72" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/it/AutoFill.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+          <folding>
+            <element signature="e#293#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="232" column="21" lean-forward="false" selection-start-line="232" selection-start-column="21" selection-end-line="232" selection-end-column="21" />
+          <folding>
+            <element signature="e#4570#5797#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding />
         </state>
       </provider>

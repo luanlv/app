@@ -58,9 +58,9 @@ class DOPage extends React.Component {
   render() {
     let gThis = this
     return (
-      <div className="do-page">
-        <div className="laixe-doWr">
-          <h2 className="mb20" style={{textAlign: 'center', paddingTop: 20}}>Thêm thầu phụ</h2>
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.3em'}}>
+          <h2 className="mb20" style={{textAlign: 'center', fontSize: '1.2rem'}}>Thêm thầu phụ</h2>
           <ThemThauPhuForm
             defaultValue={{}}
           />

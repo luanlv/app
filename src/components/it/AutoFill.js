@@ -60,8 +60,8 @@ class DOPage extends React.Component {
   render() {
     let gThis = this
     return (
-      <div className="do-page">
-        <div className="laixe-doWr">
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.3em'}}>
           
           {!this.state.init && (
             <div style={{textAlign: 'center', paddingTop: 50}}>
@@ -70,7 +70,7 @@ class DOPage extends React.Component {
           )}
           {this.state.init && (
             <div className="it">
-              <h2 style={{textAlign: 'center'}}>Thêm Auto Fill</h2>
+              <h2 style={{textAlign: 'center', fontSize: '1.2rem'}}>Thêm Auto Fill</h2>
               <ThemAutoFillPeople
                 title="Khách hàng"
                 fieldName="khachhang"

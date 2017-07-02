@@ -230,10 +230,11 @@ textarea.ant-input {
 }
 .groupWr .header {
     text-align: left;
-    font-weight: lighter;
+    font-weight: bold;
     font-style: italic;
     color: cadetblue;
     margin-bottom: 10px;
+    font-size: 0.3rem
 }
 
 .mt5 { margin-top: 5px  }

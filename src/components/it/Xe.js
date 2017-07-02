@@ -67,11 +67,10 @@ class DOPage extends React.Component {
   render() {
     let gThis = this
     return (
-      <div className="do-page">
-        <div className="laixe-doWr">
-    
+      <div className="home-page" style={{marginTop: '1rem'}}>
+        <div style={{padding: '0.3em'}}>
             <div>
-              <h2 style={{textAlign: 'center'}}>Thêm xe</h2>
+              <h2 style={{textAlign: 'center', fontSize: '1.2rem'}}>Thêm xe</h2>
               <ThemXeForm />
             </div>
         </div>
