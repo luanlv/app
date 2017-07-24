@@ -145,6 +145,7 @@ class DOPage extends React.Component {
           </div>
         </div>)
     } else {
+      console.log(gThis.state.data)
         return (
           <div className="home-page" style={{marginTop: '0.5rem'}}>
             <div style={{padding: '0.2rem', paddingBottom: '2rem'}}>
@@ -162,23 +163,28 @@ class DOPage extends React.Component {
                 <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người yêu cầu: </span><b style={{fontSize: '0.6rem'}}>{this.state.data.nguoiyeucau}</b>
               </div>
               <div>
-                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm xuất phát : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.diemxuatphat}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm xuất phát : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.diemxuatphat.name} | {this.state.data.diemxuatphat.tinh.name}</b>
               </div>
               <div>
-                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm trả hàng: </span><b style={{fontSize: '0.6rem'}}>{this.state.data.diemtrahang}</b>
+                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Điểm trả hàng: </span>
+                <b style={{fontSize: '0.6rem'}}>
+                  {this.state.data.diemtrahang.map((el,index) => {
+                    return <div>[{index + 1}] - {el.name} | {el.tinh.name}</div>
+                  })}
+                </b>
               </div>
               
               <div>
                 <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Trọng tải: </span><b style={{fontSize: '0.6rem'}}>{this.state.data.trongtai} tấn</b>
               </div>
               
-              <div>
-                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số điểm </span><b style={{fontSize: '0.6rem'}}>{this.state.data.sodiem}</b>
-              </div>
+              {/*<div>*/}
+                {/*<span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số điểm </span><b style={{fontSize: '0.6rem'}}>{this.state.data.sodiem}</b>*/}
+              {/*</div>*/}
               
-              <div>
-                <span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Quãng đường : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.sokm} KM</b>
-              </div>
+              {/*<div>*/}
+                {/*<span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Quãng đường : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.sokm} KM</b>*/}
+              {/*</div>*/}
               
               {/*<div>*/}
                 {/*<span style={{fontSize: '0.4rem', width: '3rem', display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền thu : </span><b style={{fontSize: '0.6rem'}}>{this.state.data.tienthu.toLocaleString() } đ</b>*/}
@@ -189,6 +195,7 @@ class DOPage extends React.Component {
                   {/*{!this.state.data.trangthai.daduyet ? ("Đang xử lý") : (this.state.data.trangthai.duyet ? ("Đồng ý") : ("Hủy"))}*/}
                 {/*</b>*/}
               {/*</div>*/}
+              
             </div>
             {this.state.data.tinhtrang === 0 && <Row style={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
               <Button type="primary"
@@ -345,9 +352,9 @@ function check(data){
     message.error("Số điểm trả hàng không được để trống")
     return false
   }
-  if(data.sokm === undefined || data.sokm < 1){
-    message.error("Số KM đi được không được để trống")
-    return false
-  }
+  // if(data.sokm === undefined || data.sokm < 1){
+  //   message.error("Số KM đi được không được để trống")
+  //   return false
+  // }
   return true
 }

@@ -69,33 +69,33 @@ class Component extends React.Component {
               </div>
               <div style={{marginTop: '2em'}}>
                 
-                <Row className="mt10 textCenter">
-                  <SegmentedControl
-                    style={{height: '1.5rem', fontSize: '2rem !important'}}
-                    selectedIndex={this.state.selectedIndex}
-                    values={['Lái xe', 'Điều hành', 'IT']}
-                    onValueChange={(value) => {
-                      let index = 0;
-                      let type = 'laixe'
-                      if(value === 'Lái xe'){
-                        index = 0
-                        type = 'laixe'
-                      } else if (value === 'Điều hành'){
-                        index = 1
-                        type = 'dieuhanh'
-                      } else if (value === 'IT'){
-                        index = 2
-                        type = 'it'
-                      }
-                      this.setState(prev => { return {
-                        ...prev,
-                        selectedIndex: index,
-                        type: type
-                      }})
-                      
-                    }}
-                  />
-                </Row>
+                {/*<Row className="mt10 textCenter">*/}
+                  {/*<SegmentedControl*/}
+                    {/*style={{height: '1.5rem', fontSize: '2rem !important'}}*/}
+                    {/*selectedIndex={this.state.selectedIndex}*/}
+                    {/*values={['Lái xe', 'Điều hành', 'IT']}*/}
+                    {/*onValueChange={(value) => {*/}
+                      {/*let index = 0;*/}
+                      {/*let type = 'laixe'*/}
+                      {/*if(value === 'Lái xe'){*/}
+                        {/*index = 0*/}
+                        {/*type = 'laixe'*/}
+                      {/*} else if (value === 'Điều hành'){*/}
+                        {/*index = 1*/}
+                        {/*type = 'dieuhanh'*/}
+                      {/*} else if (value === 'IT'){*/}
+                        {/*index = 2*/}
+                        {/*type = 'it'*/}
+                      {/*}*/}
+                      {/*this.setState(prev => { return {*/}
+                        {/*...prev,*/}
+                        {/*selectedIndex: index,*/}
+                        {/*type: type*/}
+                      {/*}})*/}
+                      {/**/}
+                    {/*}}*/}
+                  {/*/>*/}
+                {/*</Row>*/}
                 
                 <List>
                   <InputItem
