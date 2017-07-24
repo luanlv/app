@@ -71,7 +71,7 @@ class Home extends React.Component {
             >Lệnh điều xe</Button>}
             {this.props.user.do !== null &&
               <Link to="/laixe/do/xem">
-                <Button size={"large"} className="btn" type="primary" loading={true} style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>
+                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>
               </Link>
             }
           
