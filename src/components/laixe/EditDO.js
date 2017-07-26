@@ -113,9 +113,9 @@ class DOPage extends React.Component {
     //   visible: false,
     // });
     let that = this;
+    console.log(this.props.params.id)
     if(this.state.khongnhan) {
-  
-      agent.LaiXe.huyDO({do: this.props.do, lydohuy: this.state.lydohuy})
+      agent.LaiXe.huyDO({do: this.props.params.id, lydohuy: this.state.lydohuy})
         .then(res => {
           const token = window.localStorage.getItem('jwt');
           if (token) {
@@ -123,18 +123,18 @@ class DOPage extends React.Component {
           }
           this.props.reloadInfo(agent.Auth.current());
           message.success("Hủy thành công")
-          this.context.router.replace('/laixe')
+          this.context.router.replace('/laixe/do')
         })
         .catch(err => {
           message.error("Có lỗi")
         })
       
     } else {
-      agent.LaiXe.nhanDO({do: this.props.do, bks: that.state.bks})
+      agent.LaiXe.nhanDO({do: this.props.params.id, bks: that.state.bks})
         .then(res => {
           this.context.router.replace('/laixe/do/dangdi');
           message.success("Xác nhận thành công")
-          this.context.router.replace('/laixe')
+          this.context.router.replace('/laixe/do')
         })
         .catch(err => {
           message.error("Có lỗi")

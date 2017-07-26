@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf9a0dd3-c738-4a2d-ab27-4b6c55b50c92" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_components/Avatar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/laixe/ChotKMMenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/laixe/DOMenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/laixe/ListDODaNhan.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/laixe/ListDODangCho.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/laixe/ListDOHoanThanh.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.css" afterPath="$PROJECT_DIR$/public/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/agent.js" afterPath="$PROJECT_DIR$/src/agent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/DoMenu.js" afterPath="$PROJECT_DIR$/src/components/laixe/DoMenu.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/EditDO.js" afterPath="$PROJECT_DIR$/src/components/laixe/EditDO.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/laixe/Home.js" afterPath="$PROJECT_DIR$/src/components/laixe/Home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -65,17 +53,17 @@
         <entry file="file://$PROJECT_DIR$/src/components/laixe/ListDOHoanThanh.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="704">
-              <caret line="58" column="8" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+              <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="agent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="agent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="672">
+              <caret line="43" column="2" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -119,19 +107,19 @@
         <entry file="file://$PROJECT_DIR$/public/app.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
-              <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+              <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditDO.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EditDO.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/laixe/EditDO.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="35" />
+            <state relative-caret-position="591">
+              <caret line="136" column="48" lean-forward="false" selection-start-line="136" selection-start-column="48" selection-end-line="136" selection-end-column="48" />
               <folding>
-                <element signature="e#2627#3580#0" expanded="false" />
+                <element signature="e#293#319#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,8 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>listDO</find>
-      <find>xem</find>
       <find>groupWr</find>
       <find>dieuhanh</find>
       <find>data</find>
@@ -165,7 +151,6 @@
       <find>Tiếp tục</find>
       <find>dangdi</find>
       <find>visible</find>
-      <find>this.props.do</find>
       <find>this.props.params.id</find>
       <find>this.state</find>
       <find>onClick</find>
@@ -178,6 +163,9 @@
       <find>handleOk</find>
       <find>/laixe/km</find>
       <find>laixe/km</find>
+      <find>{do</find>
+      <find>this.props.do</find>
+      <find>this.props.params</find>
     </findStrings>
     <replaceStrings>
       <replace>#108ee9 !important;</replace>
@@ -235,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/components/laixe/DOHome.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/DoMenu.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/DOMenu.js" />
-        <option value="$PROJECT_DIR$/src/components/laixe/EditDO.js" />
         <option value="$PROJECT_DIR$/src/components/laixe/Home.js" />
         <option value="$PROJECT_DIR$/public/app.css" />
         <option value="$PROJECT_DIR$/src/components/laixe/DangDi.js" />
@@ -246,6 +233,7 @@
         <option value="$PROJECT_DIR$/src/components/laixe/ChotKMMenu.js" />
         <option value="$PROJECT_DIR$/src/components/_components/Avatar.js" />
         <option value="$PROJECT_DIR$/src/agent.js" />
+        <option value="$PROJECT_DIR$/src/components/laixe/EditDO.js" />
       </list>
     </option>
   </component>
@@ -488,12 +476,12 @@
       <workItem from="1499153799995" duration="131000" />
       <workItem from="1500939296323" duration="691000" />
       <workItem from="1500940298332" duration="148000" />
-      <workItem from="1501037694647" duration="16335000" />
+      <workItem from="1501037694647" duration="17151000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123600000" />
+    <option name="totallyTimeSpent" value="124416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="0" width="1676" height="1028" extended-state="0" />
@@ -815,7 +803,7 @@
         <state relative-caret-position="696">
           <caret line="59" column="46" lean-forward="false" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -839,7 +827,7 @@
     <entry file="file://$PROJECT_DIR$/public/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
-          <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+          <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -881,18 +869,8 @@
     <entry file="file://$PROJECT_DIR$/src/components/laixe/ListDOHoanThanh.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
-          <caret line="58" column="8" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/laixe/EditDO.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="35" />
-          <folding>
-            <element signature="e#2627#3580#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,9 +896,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="672">
+          <caret line="43" column="2" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/laixe/EditDO.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="136" column="48" lean-forward="false" selection-start-line="136" selection-start-column="48" selection-end-line="136" selection-end-column="48" />
+          <folding>
+            <element signature="e#293#319#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
