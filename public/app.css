@@ -11,6 +11,15 @@ html, body {
     top: 17px;
 }
 
+.list-do {
+    margin: 20px auto;
+}
+
+.ant-upload-list-item-done {
+    width: 70vw !important;
+    height: auto !important;
+}
+
 .ant-row b, .ant-row  {
     line-height: 0.6rem !important;
 }
@@ -150,7 +159,7 @@ textarea.ant-input {
 
 
 .am-list-item {
-    height: 2em !important;
+    /*height: 2em !important;*/
 }
 
 .am-input-control input {

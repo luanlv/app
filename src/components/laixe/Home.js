@@ -60,37 +60,23 @@ class Home extends React.Component {
     return (
       <div className="home-page" style={{marginTop: '1rem'}}>
         <div style={{padding: '0.2em'}}>
-            {this.props.user.do === null && <Button size={"large"} className="btn" type="" loading={false} style={{width: '100%', height: '2rem', fontSize: '1rem'}}
-              onClick={() => {
-                const token = window.localStorage.getItem('jwt');
-                if (token) {
-                  agent.setToken(token);
-                }
-                this.props.reloadInfo(agent.Auth.current());
-              }}
-            >Lệnh điều xe</Button>}
-            {this.props.user.do !== null &&
-              <Link to="/laixe/do/xem">
-                <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>
-              </Link>
-            }
-          
   
-            <Link to="/laixe/danhsachdo">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Lịch sử</Button>
-            </Link>
+          <Link to="/laixe/km">
+            <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Chốt KM</Button>
+          </Link>
           
-            <Link to="/laixe/phuphi">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Phụ phí</Button>
-            </Link>
-            
-            {/*<Link to="/laixe/phucap">*/}
-              {/*<Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Thông tin</Button>*/}
-            {/*</Link>*/}
+          <Link to="/laixe/do">
+            <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>
+          </Link>
+          
+          {/*<Link to="/laixe/phucap">*/}
+            {/*<Button size={"large"} className="btn" type="primary" style={{width: '100%', height: 100, fontSize: '1.5em'}}>Thông tin</Button>*/}
+          {/*</Link>*/}
 
-            <Link to="/laixe/doimatkhau">
-              <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Đổi mật khẩu</Button>
-            </Link>
+          <Link to="/laixe/doimatkhau">
+            <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Đổi mật khẩu</Button>
+          </Link>
+          
         </div>
       </div>
     );

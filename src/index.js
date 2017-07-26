@@ -15,9 +15,15 @@ import PhuPhiMenuLaiXe from './components/laixe/PhuPhiMenu';
 import EditPhuPhiLaiXe from './components/laixe/EditPhuPhi';
 import LaiXeThemDO from './components/laixe/DO';
 import LaiXeListDO from './components/laixe/ListDO';
+import LaiXeDOMenu from './components/laixe/DOMenu';
+import LaiXeDOChuaNhan from './components/laixe/ListDODangCho';
+import LaiXeDODaNhan from './components/laixe/ListDODaNhan';
+import LaiXeDOHoanThanh from './components/laixe/ListDOHoanThanh';
 import LaiXeEditDO from './components/laixe/EditDO';
 import LaiXePassword from './components/laixe/Password';
 import LaiXeDangDi from './components/laixe/DangDi';
+
+import LaiXeChotKMMenu from './components/laixe/ChotKMMenu';
 
 import LaiXeThemPhuPhi from './components/laixe/PhuPhi';
 import LaiXeListPhuPhi from './components/laixe/ListPhuPhi';
@@ -36,6 +42,7 @@ import DieuHanhThemDO from './components/dieuhanh/DO';
 import DieuHanhDOMenu from './components/dieuhanh/DoMenu';
 import DieuHanhPhuPhi from './components/dieuhanh/ListPhuPhi';
 import DieuHanhEditDO from './components/dieuhanh/EditDO';
+
 import DieuHanhEditPhuPhi from './components/dieuhanh/EditPhuPhi';
 import DieuHanhListDO from './components/dieuhanh/ListDO';
 
@@ -50,16 +57,24 @@ ReactDOM.render((
         <Route path="/" component={App}>
           <IndexRoute component={Home} />
           
+          <Route path="laixe/km" component={LaiXeChotKMMenu} />
+          
+          
           <Route path="laixe" component={HomeLaiXe} />
-          <Route path="laixe/do" component={DoMenuLaiXe} />
+          <Route path="laixe/do" component={LaiXeDOMenu} />
+          <Route path="laixe/do/chuanhan" component={LaiXeDOChuaNhan} />
+          <Route path="laixe/do/danhan" component={LaiXeDODaNhan} />
+          <Route path="laixe/do/lichsu" component={LaiXeDOHoanThanh} />
+          {/*<Route path="laixe/do" component={LaiXeDOMenu} />*/}
+          {/*<Route path="laixe/do/danhsachnhan" component={LaiXeDOMenu} />*/}
           <Route path="laixe/phuphi" component={PhuPhiMenuLaiXe} />
           <Route path="laixe/phuphi/:id" component={EditPhuPhiLaiXe} />
 
           <Route path="laixe/themdo" component={LaiXeThemDO} />
           <Route path="laixe/danhsachdo" component={LaiXeListDO} />
           <Route path="laixe/doimatkhau" component={LaiXePassword} />
-          <Route path="laixe/do/xem" component={LaiXeEditDO} />
-          <Route path="laixe/do/dangdi" component={LaiXeDangDi} />
+          <Route path="laixe/do/:id" component={LaiXeEditDO} />
+          <Route path="laixe/do/:id/danhan" component={LaiXeDangDi} />
 
 
           <Route path="laixe/themphuphi" component={LaiXeThemPhuPhi} />

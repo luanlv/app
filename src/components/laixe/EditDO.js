@@ -63,16 +63,22 @@ class DOPage extends React.Component {
       diemtrahang: [],
       nguoiyeucau: [],
       visible: false,
+      visible2: false,
       edit: false,
       bks: this.props.xe.bks,
       khongnhan: false,
-      lydohuy: ''
+      lydohuy: '',
+      data2: {
+        tienthu: 0,
+        tienphatsinh: 0,
+        lydo: ''
+      },
     }
   }
 
   componentWillMount() {
     let that = this;
-    agent.LaiXe.DObyId(this.props.do)
+    agent.LaiXe.DObyId(this.props.params.id)
       .then(res => {
         let DO = res[0]
         that.setState(prev => { return {
@@ -95,6 +101,12 @@ class DOPage extends React.Component {
       visible: true,
     });
   }
+   showModal2 = () => {
+    this.setState({
+      visible2: true,
+    });
+  }
+  
   handleOk = (e) => {
     // console.log(e);
     // this.setState({
@@ -122,6 +134,7 @@ class DOPage extends React.Component {
         .then(res => {
           this.context.router.replace('/laixe/do/dangdi');
           message.success("Xác nhận thành công")
+          this.context.router.replace('/laixe')
         })
         .catch(err => {
           message.error("Có lỗi")
@@ -129,6 +142,24 @@ class DOPage extends React.Component {
     }
     
   }
+  
+  handleOk2 = (e) => {
+    let that = this;
+    agent.LaiXe.ketthucDO({do: this.props.params.id, tienthu: that.state.data2.tienthu, tienphatsinh: that.state.data2.tienphatsinh, lydo: that.state.data2.lydo})
+      .then(res => {
+        message.success("Thành công")
+        const token = window.localStorage.getItem('jwt');
+        if (token) {
+          agent.setToken(token);
+        }
+        this.props.reloadInfo(agent.Auth.current());
+        this.context.router.replace('/laixe')
+      })
+      .catch(err => {
+        message.error("Có lỗi")
+      })
+  }
+  
   handleCancel = (e) => {
     console.log(e);
     this.setState({
@@ -213,7 +244,7 @@ class DOPage extends React.Component {
                       //
                       // }}
                       onClick={() => this.setState({visible: true, khongnhan: false})}
-              >Chọn xe</Button>
+              >Nhận lệnh</Button>
               <Button type="danger" ghost={true}
                       style={{width: '50%', height: '1.5rem', fontSize: '0.6rem'}}
                       onClick={() => {
@@ -223,15 +254,14 @@ class DOPage extends React.Component {
                           khongnhan: true,
                         }})
                       }}
-              >Không nhận</Button>
+              >Hủy lệnh</Button>
             </Row>}
             
-            {this.state.data.tinhtrang > 0 && <Row style={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
-              <Link to="/laixe/do/dangdi">
+            {this.state.data.tinhtrang === 1 && <Row style={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
                 <Button type="primary"
                         style={{width: '100%', height: '1.5rem', fontSize: '0.6rem'}}
-                >Tiếp tục</Button>
-              </Link>
+                        onClick={this.showModal2}
+                >Kết thúc</Button>
             </Row>
             }
             
@@ -281,6 +311,103 @@ class DOPage extends React.Component {
                 </div>
               )}
               
+            </Modal>
+  
+            <Modal
+              visible={this.state.visible2}
+              title="Kết thúc chuyến đi"
+              maskClosable={true}
+              // onOk={this.handleOk}
+              // onCancel={this.handleCancel}
+              footer={[
+                <Button key="back" size="large" onClick={() => this.handleCancel2()}>Quay lại</Button>,
+                <Button key="submit" type="primary" size="large" onClick={this.handleOk2}>Xác nhận</Button>,
+              ]}
+            >
+              <b style={{fontSize: '0.7rem'}}>Tiền thu hộ</b>
+              <InputNumber style={{width: '100%'}} size="large"
+                           defaultValue={0}
+                           min={0}
+                           formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+                           parser={value => value.replace(/(,*)/g, '')}
+                           onChange={(value) => {
+                             if(!isNaN(parseFloat(value)) || value === '') {
+                               this.setState(prev => {
+                                 return {
+                                   ...prev,
+                                   data2: {
+                                     ...prev.data2,
+                                     tienthu: value
+                                   }
+                                 }
+                               })
+                             } else {
+                               this.setState(prev => {
+                                 return {
+                                   ...prev,
+                                   data2: {
+                                     ...prev.data2,
+                                     tienthu: 1
+                                   }
+                                 }
+                               })
+                             }
+                           }}
+              />
+              { !this.state.phatsinh && <Button type="primary" ghost={true} style={{width: '3rem !important', fontSize: '0.4rem'}}
+                                                onClick={() => {
+                                                  this.setState(prev => {return {
+                                                    ...prev,
+                                                    phatsinh: true
+                                                  }})
+                                                }}
+              >Phí phát sinh</Button>}
+    
+              {this.state.phatsinh && <div>
+                <b style={{fontSize: '0.7rem'}}>Phí phát sinh</b>
+                <InputNumber style={{width: '100%'}} size="large"
+                             defaultValue={0}
+                             min={0}
+                             formatter={value => `${value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+                             parser={value => value.replace(/(,*)/g, '')}
+                             onChange={(value) => {
+                               if(!isNaN(parseFloat(value)) || value === '') {
+                                 this.setState(prev => {
+                                   return {
+                                     ...prev,
+                                     data2: {
+                                       ...prev.data2,
+                                       tienphatsinh: value
+                                     }
+                                   }
+                                 })
+                               } else {
+                                 this.setState(prev => {
+                                   return {
+                                     ...prev,
+                                     data2: {
+                                       ...prev.data2,
+                                       tienphatsinh: 1
+                                     }
+                                   }
+                                 })
+                               }
+                             }}
+                />
+                <Input type="textarea" rows={4} style={{width: '100% !important', height: '3rem !important', lineHeight: '1rem', fontSize: '0.5rem'}}
+                       onChange={(value) => {
+                         this.setState(prev => {
+                           return {
+                             ...prev,
+                             data2: {
+                               ...prev.data2,
+                               lydo: value
+                             }
+                           }
+                         })
+                       }}
+                />
+              </div>}
             </Modal>
             
           </div>
