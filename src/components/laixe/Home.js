@@ -60,10 +60,8 @@ class Home extends React.Component {
     return (
       <div className="home-page" style={{marginTop: '1rem'}}>
         <div style={{padding: '0.2em'}}>
-  
-          <Link to="/laixe/km">
-            <Button size={"large"} className="btn" type="primary" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Chốt KM</Button>
-          </Link>
+
+          <Button size={"large"} className="btn" type="ghost" style={{width: '100%', height: '2rem', fontSize: '1rem'}}>Chốt KM</Button>
           
           <Link to="/laixe/do">
             <Button size={"large"} className="btn" type="primary" style={{width: '100%', marginTop: '0.3rem', height: '2rem', fontSize: '1rem'}}>Lệnh điều xe</Button>

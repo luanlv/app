@@ -161,9 +161,16 @@ class DOPage extends React.Component {
   }
   
   handleCancel = (e) => {
-    console.log(e);
     this.setState({
       visible: false,
+      visible2: false,
+    });
+  }
+
+  handleCancel2 = (e) => {
+    this.setState({
+      visible: false,
+      visible2: false,
     });
   }
 

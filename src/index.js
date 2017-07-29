@@ -15,7 +15,7 @@ import PhuPhiMenuLaiXe from './components/laixe/PhuPhiMenu';
 import EditPhuPhiLaiXe from './components/laixe/EditPhuPhi';
 import LaiXeThemDO from './components/laixe/DO';
 import LaiXeListDO from './components/laixe/ListDO';
-import LaiXeDOMenu from './components/laixe/DOMenu';
+import LaiXeDOMenu from './components/laixe/DoMenu';
 import LaiXeDOChuaNhan from './components/laixe/ListDODangCho';
 import LaiXeDODaNhan from './components/laixe/ListDODaNhan';
 import LaiXeDOHoanThanh from './components/laixe/ListDOHoanThanh';
