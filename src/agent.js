@@ -4,7 +4,7 @@ import _superagent from 'superagent';
 const superagent = superagentPromise(_superagent, global.Promise);
 
 // const API_ROOT = 'http://localhost:8000';
-// const API_ROOT = 'http://192.168.1.101:8000';
+// const API_ROOT = 'http://192.168.1.104:8000';
 const API_ROOT = 'http://api.colombus.vn';
 
 const encode = encodeURIComponent;
@@ -121,8 +121,16 @@ const LaiXe = {
     requests.get('/laixe/do/danhan'),
   listDOHoanThanh: () =>
     requests.get('/laixe/do/hoanthanh'),
-  chotkm: () =>
-    requests.get('/laixe/km/chotkm'),
+  chotkm: data =>
+    requests.post('/laixe/km/chotkm', {data}),
+  chotkmdau: data =>
+    requests.post('/laixe/km/chotkmdau', {data}),
+  chotkmcuoi: data =>
+    requests.post('/laixe/km/chotkmcuoi', {data}),
+  xe: () =>
+    requests.get('/laixe/xe'),
+  getKM: () =>
+    requests.get('/laixe/km'),
 }
 
 const IT = {

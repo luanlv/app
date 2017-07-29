@@ -3,6 +3,29 @@ html, body {
     font-size: 10vw !important;
 }
 
+@media only screen and (min-width: 900px) {
+    html, body {
+        font-size: 90px !important;
+    }
+    #root {
+        max-width: 900px !important;
+        margin: 0 auto;
+    }
+}
+
+/* tile uploaded pictures */
+.upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-right: 8px;
+}
+.upload-list-inline .ant-upload-animate-enter {
+    animation-name: uploadAnimateInlineIn;
+}
+.upload-list-inline .ant-upload-animate-leave {
+    animation-name: uploadAnimateInlineOut;
+}
+
 #logo {
     z-index: 101;
     position: absolute;
@@ -15,9 +38,8 @@ html, body {
     margin: 20px auto;
 }
 
-.ant-upload-list-item-done {
-    width: 70vw !important;
-    height: auto !important;
+.ant-upload-list-item {
+    width: 100% !important;
 }
 
 .ant-row b, .ant-row  {
